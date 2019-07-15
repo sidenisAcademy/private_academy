@@ -23,5 +23,9 @@ public class TestTax {
         double myTaxesInUsa = USATax.calcTax();
 
         System.out.println("My taxes is " + myTaxesInUsa + " in " + USATax.city);
+
+        double myTaxesInUsa1 = USATax.calcTax(0.55, "New York");
+        double myTaxesInUsa2 = USATax.calcTax("Washington");
+        double myTaxesInUsa3 = USATax.calcTax(0.34, 234);
     }
 }

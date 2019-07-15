@@ -12,4 +12,22 @@ public class USATax extends Tax {
             return grossIncome * 0.08;
         }
     }
+
+    public double calcTax(double taxPercentage, String city) {
+        double myTaxesInUsa = grossIncome * taxPercentage;
+        System.out.println("My taxes is " + myTaxesInUsa + " in " + city);
+        return myTaxesInUsa;
+    }
+
+    public double calcTax(String city) {
+        double myTaxesInUsa = grossIncome * 0.66;
+        System.out.println("My taxes is " + myTaxesInUsa + " in " + city);
+        return myTaxesInUsa;
+    }
+
+    public double calcTax(double taxPercentage, int cityCode) {
+        double myTaxesInUsa = grossIncome * taxPercentage;
+        System.out.println("My taxes is " + myTaxesInUsa + " in " + cityCode);
+        return myTaxesInUsa;
+    }
 }
