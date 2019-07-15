@@ -11,5 +11,17 @@ public class TestCar {
         car2.color = "red";
 
         System.out.println("The cars have been painted");
+
+        JamesBondCar jamesBondCar = new JamesBondCar();
+
+        jamesBondCar.color = "chameleon";
+        jamesBondCar.numberOfDoors = 2;
+        jamesBondCar.currentSubmergeDepth = 100;
+        jamesBondCar.isGunOnBoard = false;
+
+        jamesBondCar.startEngine();
+        jamesBondCar.submerge();
+        jamesBondCar.surface();
+        jamesBondCar.stopEngine();
     }
 }
