@@ -15,4 +15,19 @@ public class USATax extends Tax {
             return grossIncome * 0.8;
         }
     }
+
+    public double calcTax(double taxRate, String city) {
+        System.out.println("City = " + city);
+        return grossIncome * taxRate;
+    }
+
+    public double calcTax(String city) {
+        System.out.println("City = " + city);
+        return grossIncome * 0.8;
+    }
+
+    public double calcTax(double taxRate, int code) {
+        System.out.println("City = " + code);
+        return grossIncome * taxRate;
+    }
 }
