@@ -9,20 +9,19 @@ public class UsaTax extends Tax {
         this.children = children;
     }
 
-    public double taxCalc(){
-
-        if (grossIncome <= 500000){
-            return grossIncome * 0.06;
-        }
-        else if (grossIncome > 500000 && children <=2 && children > 0){
-            return grossIncome * 0.1;
-        }
-        else return grossIncome * 0.08;
+    public double taxCalc(double percentage, String city){
+        System.out.println("Taxes for " + city + " = " + grossIncome * percentage);
+        return grossIncome * percentage;
     }
 
-
-
-    public void doSomething(UsaTax tax){
-        System.out.println(tax.children);
+    public double taxCalc(String city){
+        System.out.println("Base tax for " + city + " is " + grossIncome * 0.13);
+        return grossIncome * 0.13;
     }
+
+    public double taxCalc(double percentage, int cityCode){
+        System.out.println(grossIncome * percentage + " for city with code " + cityCode);
+        return grossIncome * percentage;
+    }
+
 }
