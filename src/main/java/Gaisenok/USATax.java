@@ -11,4 +11,13 @@ public class USATax extends Tax {
         } else
             return (grossIncome * 0.08);
     }
+    void calcTax(double taxPercentage, String cityName) {
+        System.out.println(taxPercentage +" in "+ cityName);
+    }
+    void calcTax(double taxPercentage, int cityCode) {
+        System.out.println(taxPercentage +" in a city with zipcode "+ cityCode);
+    }
+    void calcTax(String cityName) {
+        System.out.println(cityName);
+    }
 }

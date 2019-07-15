@@ -14,5 +14,10 @@ public class TestTax {
         usaTax.grossIncome=700000;
         usaTax.city="Dallas";
         System.out.println("My taxes in " + usaTax.city + " is " + usaTax.calcTax());
+
+        USATax usTax1 = new USATax();
+        usTax1.calcTax(0.56, "Denver");
+        usTax1.calcTax("Denver");
+        usTax1.calcTax(0.23,12345);
     }
 }
