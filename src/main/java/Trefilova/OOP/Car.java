@@ -1,4 +1,4 @@
-package Trefilova;
+package Trefilova.OOP;
 
 public class Car {
     String color;
