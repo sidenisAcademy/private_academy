@@ -1,4 +1,4 @@
-package Trefilova;
+package Trefilova.OOP;
 
 public class TestCar {
     public static void main(String[] args) {
