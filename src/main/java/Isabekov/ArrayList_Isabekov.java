@@ -1,8 +1,6 @@
 package Isabekov;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ArrayList_Isabekov {
     public static void main(String[] args) {
@@ -21,21 +19,26 @@ public class ArrayList_Isabekov {
 
 
 //    public static void main(String[] args) {
-        HashMap<Integer, String> map = new HashMap<>();
-        map.put(1, "A");
-        map.put(2, "B");
+//        HashMap<Integer, String> map = new HashMap<>();
+//        map.put(1, "A");
+//        map.put(2, "B");
 //       System.out.println(map.get(1));
-        for ( Integer key : map.keySet() ) {
-             System.out.println(key);
-        }
-        map.forEach((k,v) -> {
-            System.out.println(k + v);
-        } );
+//        for ( Integer key : map.keySet() ) {
+//             System.out.println(key);
+//        }
+//        map.forEach((k,v) -> {
+//            System.out.println(k + v);
+//        } );
+//
+//        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+//            System.out.println(entry.getKey() + entry.getValue());
+//        }
 
-        for (Map.Entry<Integer, String> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + entry.getValue());
-        }
-
+        Set<Integer> s1 = new HashSet<>();
+        s1.add(0);
+        s1.add(1);
+        s1.add(2);
+        System.out.println(s1.size());
 
     }
 }
