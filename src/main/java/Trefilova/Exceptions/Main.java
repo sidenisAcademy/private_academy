@@ -13,10 +13,17 @@ public class Main {
 
         try {
             exceptions.openFile2(file);
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             System.out.println("File is not found");
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println("Error is found");
-        };
+        }
+
+
+        System.out.println();
+
+        exceptions.openFile3(file);
     }
 }
