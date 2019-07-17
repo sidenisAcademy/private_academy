@@ -1,10 +1,11 @@
 package Isabekov;
 
-    public class Tax {
-        double grossIncome;
-        String city;
+public class Tax {
+    double grossIncome;
+    String city;
+    Integer test;
 
-        public double calcTax() {
-            return grossIncome * 0.13;
-        }
+    public double calcTax() {
+        return grossIncome * 0.13;
     }
+}
