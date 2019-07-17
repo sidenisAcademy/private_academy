@@ -1,13 +1,15 @@
 package Isabekov;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 
 public class FileInputStream2 {
 
     public static void main(String args[]) {
+        FileInputStream fin = null;
         try {
 //            char arrch;
-            FileInputStream fin = new FileInputStream("C:\\academy\\testout.txt");
+            fin = new FileInputStream("C:\\academy\\testout.txt");
             int i = fin.read();
             System.out.print((char) i);
 
@@ -16,9 +18,19 @@ public class FileInputStream2 {
                 System.out.print((char) i);
             }
                 fin.close();
-            } catch(Exception e){
+        } catch(Exception e){
                 System.out.println(e);
             }
-        }
-
+//        finally {
+//            if (fin != null){
+//                try {
+//                    System.out.println("close");
+//                    fin.close();
+//                }catch(IOException e1){
+//                    e1.printStackTrace();
+//                }
+//            }
+//        }
     }
+
+}
