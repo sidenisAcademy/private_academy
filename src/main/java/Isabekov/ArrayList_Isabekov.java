@@ -2,6 +2,7 @@ package Isabekov;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class ArrayList_Isabekov {
     public static void main(String[] args) {
@@ -23,7 +24,19 @@ public class ArrayList_Isabekov {
         HashMap<Integer, String> map = new HashMap<>();
         map.put(1, "A");
         map.put(2, "B");
-        System.out.println(map.get(1));
+//       System.out.println(map.get(1));
+        for ( Integer key : map.keySet() ) {
+             System.out.println(key);
+        }
+        map.forEach((k,v) -> {
+            System.out.println(k + v);
+        } );
+
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + entry.getValue());
+        }
+
+
     }
 }
 
