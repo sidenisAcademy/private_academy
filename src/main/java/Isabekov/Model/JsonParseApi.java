@@ -11,6 +11,8 @@ public class JsonParseApi {
         ObjectMapper objectMapper = new ObjectMapper();
 
         DTO1 FromJson = objectMapper.readValue(new File("target/YouTube.json"), DTO1.class);
-        System.out.println(FromJson.category);
+        System.out.println(FromJson.items);
+//        FromJson.items.forEach();
+
     }
 }
