@@ -1,0 +1,40 @@
+{
+  "category": "youtube#Music",
+  "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/PaiEDiVxOyCWelLPuuwa9LKz3Gk\"",
+  "nextPageToken": "CAUQAA",
+  "regionCode": "USA",
+  "pageInfo": {
+    "totalResults": 4249,
+    "resultsPerPage": 5,
+    "data": "2014-01-01T23:28:56.782Z"
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "singer": "youtube#Naomi Scott",
+      "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/QpOIr3QKlV5EUlzfFcVvDiJT0hw\"",
+      "id": {
+        "song": "Speechless",
+        "videoId": "UCJowOS1R0FnhipXVqEnYU1A"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "singer": "youtube#Billie Eilish",
+      "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/AWutzVOt_5p1iLVifyBdfoSTf9E\"",
+      "id": {
+        "song": "Bad Guy (Official Music Video)",
+        "videoId": "Eqa2nAAhHN0"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "singer": "youtube#Billie Eilish",
+      "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/2dIR9BTfr7QphpBuY3hPU-h5u-4\"",
+      "id": {
+        "song": "Ocean Eyes (Official Music Video)",
+        "videoId": "IirngItQuVs"
+      }
+    }
+  ]
+}
