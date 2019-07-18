@@ -13,7 +13,7 @@ public class DTO1 {
 
     @Override
     public String toString() {
-        return "Models.DTO1{" +
+        return "DTO1{" +
                 "category='" + category + '\'' +
                 ", etag='" + etag + '\'' +
                 ", nextPageToken='" + nextPageToken + '\'' +
@@ -22,4 +22,18 @@ public class DTO1 {
                 ", items=" + items +
                 '}';
     }
+
+
+
+//    @Override
+//    public String toString() {
+//        return "Models.DTO1{" +
+//                "category='" + category + '\'' +
+//                ", etag='" + etag + '\'' +
+//                ", nextPageToken='" + nextPageToken + '\'' +
+//                ", regionCode='" + regionCode + '\'' +
+//                ", pageInfo=" + pageInfo +
+//                ", items=" + items +
+//                '}';
+//    }
 }

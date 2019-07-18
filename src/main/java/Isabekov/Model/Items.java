@@ -6,6 +6,16 @@ public class Items {
     public String etag;
     public Id id;
 
+    @Override
+    public String toString() {
+        return "Items{" +
+                "kind='" + kind + '\'' +
+                ", singer='" + singer + '\'' +
+                ", etag='" + etag + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
     public void setKind(String kind) {
         this.kind = kind;
     }
