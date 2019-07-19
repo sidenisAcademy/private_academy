@@ -1,0 +1,36 @@
+[
+  {
+    "id": 777999,
+    "date": "2017-07-21T10:30:34",
+    "date_gmt": "2017-07-21T17:30:34",
+    "guid": {
+      "rendered": "https://www.sitepoint.com/?p=777999"
+    },
+    "status": true,
+    "meta": ["One", "Two"],
+    "categories": [
+      6132
+    ],
+    "tags": [
+      1223,
+      1224
+    ]
+  },
+  {
+    "id": 777888,
+    "status": false,
+    "meta": ["Hello", "World"],
+    "date": "2017-07-21T10:30:34",
+    "date_gmt": "2017-07-21T17:30:34",
+    "guid": {
+      "rendered": "https://www.sitepoint.com/?p=777998"
+    },
+    "categories": [
+      6132
+    ],
+    "tags": [
+      1234,
+      1235
+    ]
+  }
+]
