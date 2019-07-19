@@ -1,7 +1,7 @@
 package Isabekov.WordPress;
 
 public class WordPressMain {
-    int id;
+    public Integer id;
     public String date;
     public String date_gmt;
     public Guid guid;

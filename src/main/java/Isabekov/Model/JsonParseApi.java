@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 
 public class JsonParseApi {
-
+/*
     public static void main (String[] strq) throws Exception {
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -38,4 +38,6 @@ public class JsonParseApi {
         method.compareDates(DTO1);
 
     }
+
+ */
 }

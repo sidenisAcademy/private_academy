@@ -7,6 +7,7 @@ import java.util.Date;
 
 
 public class Methods {
+    /*
     public void calcResults(DTO1 DTO1) {
         System.out.println("Number of coincidences = " + DTO1.pageInfo.totalResults);
     }
@@ -46,4 +47,6 @@ public class Methods {
             System.out.println("Days are equal");
 
     }
+    */
+
 }
