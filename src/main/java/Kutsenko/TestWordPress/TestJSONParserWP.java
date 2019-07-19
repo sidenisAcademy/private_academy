@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TestJSONParserWP {
 
-    static List<WordPress> parseJSON(String jsonPath) {
+    public static List<WordPress> parseJSON(String jsonPath) {
         ObjectMapper objectMapper = new ObjectMapper();
         File json = null;
         WordPress[] wordPresses = null;
