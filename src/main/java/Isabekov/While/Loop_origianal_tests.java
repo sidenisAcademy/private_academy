@@ -16,7 +16,7 @@ public void tearDown()  {
 }
 
 
-
+//тестовый метод
     @Test
     public void AutoTest() {
         String[] friends = new String[20];
@@ -42,6 +42,11 @@ public void tearDown()  {
             }
             i++;
         }
+        int c = 1;
+        int b = 2;
+        int d = c + b;
+
+        assertTrue(d == 2);
 
         System.out.println("The iteration is over");
     }
