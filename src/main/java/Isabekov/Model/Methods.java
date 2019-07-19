@@ -1,10 +1,10 @@
 package Isabekov.Model;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
-
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+
 
 public class Methods {
     public void calcResults(DTO1 youTubeResponse) {
