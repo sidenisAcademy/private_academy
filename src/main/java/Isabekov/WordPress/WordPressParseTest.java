@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.io.File;
 
-public class WordPressParse {
+public class WordPressParseTest {
 
     @Test
     public void testString() throws Exception {
