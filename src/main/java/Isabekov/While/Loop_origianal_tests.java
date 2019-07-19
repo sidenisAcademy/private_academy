@@ -7,13 +7,13 @@ import static org.junit.Assert.*;
 
 public class Loop_origianal_tests {
 
-@Before
-public void setUp() {
-}
-
-@After
-public void tearDown()  {
-}
+//@Before
+//public void setUp() {
+//}
+//
+//@After
+//public void tearDown()  {
+//}
 
 
 //тестовый метод
@@ -31,6 +31,7 @@ public void tearDown()  {
 
         while (i<totalElements){
             if (friends[i] == null) {
+//                assertNotNull(friends[21]==null); - почему не отрабатывает assert
                 i++;
                 continue;
             }
@@ -41,13 +42,42 @@ public void tearDown()  {
                 break;
             }
             i++;
-        }
-        int c = 1;
-        int b = 2;
-        int d = c + b;
+//        }
+//        int c = 1;
+//        int b = 0;
+//        int d = c + b;
+//
+//        assertTrue(d == 1);
+//        assertNotNull(c==d);
 
-        assertTrue(d == 2);
+
+
+            }
+
+
 
         System.out.println("The iteration is over");
+        }
+
+    public class Pet {
+    public Pet() { }
+    public String meaow()
+    {
+        return "Meaow";
     }
+    }
+    @Test
+    public void testPet() {
+
+    }
+
+    @Test
+    public void testMeaow() {
+    Pet testPet = new Pet();
+    assertTrue("Meaow".equals(testPet.meaow()));
+    }
+
+
+
+
 }
