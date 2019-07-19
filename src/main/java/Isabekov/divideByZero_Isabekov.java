@@ -7,18 +7,19 @@ public class divideByZero_Isabekov {
         return 25/0;
     }
 
-    public static int devideByZero2() {
-        try {
-            return 25/0;
-        } catch (ArithmeticException e) {
-            System.out.println(e);
-        }
-        return 10;
-    }
+//    public static int divideByZero2() {
+//        try {
+//            return 25/0;
+//        } catch (ArithmeticException e) {
+//            System.out.println(e);
+//        }
+//        return 10;
+//    }
 
 
     public static void main(String[] args) {
-        System.out.println(devideByZero2());
+//        System.out.println(divideByZero2());
+        divideByZero();
         }
     }
 
