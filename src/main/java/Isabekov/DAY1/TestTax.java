@@ -14,7 +14,12 @@ public class TestTax {
 
         USATax usaTax = new USATax();
 
-        usaTax.grossIncome =
+        usaTax.grossIncome = 1000;
+        usaTax.city = "Dallas";
+        usaTax.dependents = 10;
+        double myTaxesInUsa = usaTax.calcTax();
+        System.out.println("myTaxes is " + myTaxesInUsa +"in " + usaTax.city);
+        }
     }
 }
 
