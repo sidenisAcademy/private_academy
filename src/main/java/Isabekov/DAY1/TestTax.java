@@ -1,11 +1,10 @@
 package Isabekov.DAY1;
 
-import Gaisenok.USATax;
-
 public class TestTax {
     public static void main(String[] args) {
         Tax tax = new Tax();
-
+        double grossIncome = 1000;;
+        String city = "Tomsk";;
         tax.grossIncome = 1000;
         tax.city = "Tomsk";
         double myTaxesInRus = tax.calcTax();
@@ -19,9 +18,10 @@ public class TestTax {
         usaTax.dependents = 10;
         double myTaxesInUsa = usaTax.calcTax();
         System.out.println("myTaxes is " + myTaxesInUsa +"in " + usaTax.city);
-        }
+
     }
 }
+
 
 
 
