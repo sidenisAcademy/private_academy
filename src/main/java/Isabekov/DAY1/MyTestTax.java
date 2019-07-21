@@ -13,10 +13,10 @@ public class MyTestTax {
 
         MyUSATax myUsaTax = new MyUSATax();
 
-        myUsaTax.myGrossIncome = 1000;
+        myUsaTax.myGrossIncome = 1000000;
         myUsaTax.myCity = "Dallas";
         myUsaTax.myDependents = 10;
-        myUsaTax.myChildren = 2;
+        myUsaTax.myChildren = 1;
         double myTaxesInUsa = myUsaTax.myCalcTax();
         System.out.println("myTaxes is " + myTaxesInUsa +"in " + myUsaTax.myCity);
 

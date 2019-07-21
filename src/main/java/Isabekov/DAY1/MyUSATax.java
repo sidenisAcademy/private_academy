@@ -7,7 +7,7 @@ public class MyUSATax extends MyTax {
            if(myGrossIncome < 500000){
             return 6;
            }
-           else if (myGrossIncome < 500000 && myChildren > 1 ) {
+           else if (myGrossIncome > 500000 && myChildren > 1 ) {
                return 10;
            }
            else {
