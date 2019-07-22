@@ -1,4 +1,4 @@
-package Cherkashin;
+package Cherkashin.Tax;
 
 public class TestTax {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Cherkashin;
+package Cherkashin.Tax;
 
 public class USATax extends Tax {
     int dependents;
