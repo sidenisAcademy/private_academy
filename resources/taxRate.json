@@ -1,0 +1,12 @@
+[
+ {
+  "city": "Tomsk",
+  "cityId": 123,
+  "taxRate": 13.33
+},
+  {
+    "city": "Tomsk",
+    "cityId": 123,
+    "taxRate": 13.33
+  }
+]
