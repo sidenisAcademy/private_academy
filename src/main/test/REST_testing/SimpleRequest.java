@@ -18,7 +18,7 @@ public class SimpleRequest {
                 .statusCode(200)
                 .extract()
                 .asString();
-        log.info("Response from https://petstore.swagger.io/v2/pet/144: " + resp);
+        log.info("Response from https://petstore.swagger.io/v2/pet/208: " + resp);
     }
 
     @Test
