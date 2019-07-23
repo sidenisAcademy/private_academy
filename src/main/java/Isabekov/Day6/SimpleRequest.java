@@ -1,8 +1,13 @@
-package Isabekov.Day6;
 /*
+package Isabekov.Day6;
+ */
+
 import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.response.Header;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+
+import java.util.List;
 
 import static com.jayway.restassured.RestAssured.given;
 
@@ -21,11 +26,10 @@ public class SimpleRequest {
                 .statusCode(200)
                 .extract()
                 .asString();
-        log.info("Response from https://petstore.swagger.io/v2/pet/144: " + resp);
+//        log.info("Response from https://petstore.swagger.io/v2/pet/144: " + resp);
     }
-
     private void request_id() {
-        String resp = given()
+        List<Header> resp = given()
                 .queryParam("status", "available")
                 .contentType(ContentType.JSON)
 //                .header("accept", "application/xml")
@@ -33,9 +37,31 @@ public class SimpleRequest {
                 .get("https://petstore.swagger.io/v2/pet/7")
                 .then()
                 .statusCode(200)
-                .extract()
-                .asString();
-        log.info("Here is your pet https://petstore.swagger.io/v2/pet/144: " + resp);
+                .extract().headers()
+                .asList();
+
+        for(int i = 0; i<resp.size(); i++){
+            log.info("Here are your headers " + resp.get(i));
+        }
+
+
+
+//        log.info("Here is your pet https://petstore.swagger.io/v2/pet/144: " + resp);
+    }
+// stream имеет разные функции, он может фильтровать.
+/*
+    private void request_id() {
+            String resp = given()
+                    .queryParam("status", "available")
+                    .contentType(ContentType.JSON)
+//                .header("accept", "application/xml")
+                    .when()
+                    .get("https://petstore.swagger.io/v2/pet/7")
+                    .then()
+                    .statusCode(200)
+                    .extract()
+                    .asString();
+            log.info("Here is your pet https://petstore.swagger.io/v2/pet/144: " + resp);
     }
 
     private void request_delete() {
@@ -64,12 +90,15 @@ public class SimpleRequest {
                 .asString();
         log.info("Here is your pet https://petstore.swagger.io/v2/pet/144: " + resp);
     }
+
+
     @Test
     public void requestTest() {
         request();
         request_id();
-        request_delete();
-        request_id2();
+//        request_delete();
+//        request_id2();
     }
+
+ */
 }
-*/
