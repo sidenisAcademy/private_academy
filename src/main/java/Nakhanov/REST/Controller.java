@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import static com.jayway.restassured.RestAssured.baseURI;
 import static com.jayway.restassured.RestAssured.given;
+
 @Slf4j
 public class Controller {
 
@@ -21,7 +22,7 @@ public class Controller {
         return resp;
     }
 
-    public static Pet createPet(){
+    public static Pet createPet() {
         String str = "{ \"id\": 6695, \"category\": { \"id\": 0, \"name\": \"KOT\" }," +
                 " \"name\": \"Kitty\", \"photoUrls\": [ \"string\" ], \"tags\": [ { \"id\": 0, " +
                 "\"name\": \"string\" } ], \"status\": \"sold\"}";
@@ -30,7 +31,7 @@ public class Controller {
         Pet pet = given().urlEncodingEnabled(true)
                 .body(str)
                 .contentType(ContentType.JSON)
-                .header("Accept",  "application/json")
+                .header("Accept", "application/json")
                 .post(baseURI)
                 .then()
                 .statusCode(200)
@@ -40,7 +41,7 @@ public class Controller {
         return pet;
     }
 
-    public static void deletePet(int id){
+    public static void deletePet(int id) {
         given()
                 .header("Accept", "application/json")
                 .delete("https://petstore.swagger.io/v2/pet/" + id)
@@ -71,5 +72,19 @@ public class Controller {
                 .extract()
                 .as(Pet.class);
 
+    }
+
+    public static Pet createPetByDiffWays(Pet pet) {
+        Pet pet1 = given()
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .body(pet)
+                .when()
+                .post("https://petstore.swagger.io/v2/pet")
+                .then()
+                .statusCode(200)
+                .extract()
+                .as(Pet.class);
+        return pet1;
     }
 }

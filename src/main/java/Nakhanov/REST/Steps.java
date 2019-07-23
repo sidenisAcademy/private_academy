@@ -2,10 +2,8 @@ package Nakhanov.REST;
 
 import lombok.extern.slf4j.Slf4j;
 
-import static Nakhanov.REST.Controller.createPet;
-import static Nakhanov.REST.Controller.deletePet;
-import static Nakhanov.REST.Controller.petRequestById;
-import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
+import static Nakhanov.REST.Controller.*;
+
 @Slf4j
 public class Steps {
 
@@ -27,5 +25,18 @@ public class Steps {
     public  void deletePetById(int id)
     {
         deletePet(id);
+    }
+
+
+    public void createPetBySetters1(Pet pet){
+        createPetByDiffWays(pet);
+    }
+
+    public void createPetByAllArgsConstructor(Pet pet){
+        createPetByDiffWays(pet);
+    }
+
+    public void createPetByUsingBuilder(Pet pet){
+        createPetByDiffWays(pet);
     }
 }

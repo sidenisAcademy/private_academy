@@ -1,6 +1,9 @@
 package Nakhanov.REST;
 
-public class Tag {
+import lombok.Setter;
+
+@Setter
+public class Tags {
     public Integer id;
     public String name;
 }
