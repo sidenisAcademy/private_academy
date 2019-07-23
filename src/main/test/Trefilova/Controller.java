@@ -1,7 +1,11 @@
 package Trefilova;
 
 import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.response.Response;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.jayway.restassured.RestAssured.given;
 
@@ -43,31 +47,54 @@ public class Controller {
         System.out.println("Pet is deleted");
     }
 
-        public static void requestByStatus() {
-            Pet response = given().
-                    queryParam("status", "sold").
-                    contentType(ContentType.JSON).
-                    when().
-                    get("https://petstore.swagger.io/v2/pet/findByStatus").
-                    then().
-                    statusCode(200).
-                    extract().
-                    as(Pet.class);
-            log.info(response.toString());
-        }
-
-        public static int createPet() {
-            Pet response =
-                    given()
-                            .header("accept", "application/json")
-                            .contentType(ContentType.JSON)
-                            .body("{ \"id\": 2210, \"category\": { \"id\": 2210, \"name\": \"Muhtar\" }, \"name\": \"doggie\", \"photoUrls\": [ \"string\" ], \"tags\": [ { \"id\": 0, \"name\": \"string\" } ], \"status\": \"sold\"}")
-                            .post("https://petstore.swagger.io/v2/pet")
-                            .then()
-                            .statusCode(200)
-                            .extract()
-                            .as(Pet.class);
-            //log.info(response.toString());
-            return response.id;
-        }
+    public static void requestByStatus() {
+        Pet response = given().
+                queryParam("status", "sold").
+                contentType(ContentType.JSON).
+                when().
+                get("https://petstore.swagger.io/v2/pet/findByStatus").
+                then().
+                statusCode(200).
+                extract().
+                as(Pet.class);
+        log.info(response.toString());
     }
+
+    public static int createPet() {
+        Pet pet1 = new Pet();
+
+        Category category = new Category();
+        category.id = 1;
+        category.name = "Cat";
+
+        List<String> photoUrls = new ArrayList<>();
+        photoUrls.add("url1");
+        photoUrls.add("url2");
+
+        Tags tag = new Tags();
+        tag.id = 0;
+        tag.name = "tag";
+
+        List<Tags> tagsList = new ArrayList<>();
+
+
+        pet1.setId(15);
+        pet1.setCategory(category);
+        pet1.setName("Vasiliy");
+        pet1.setPhotoUrls(photoUrls);
+        pet1.setTags(tagsList);
+        pet1.setStatus("available");
+
+        Pet response = given()
+                .header("accept", "application/json")
+                .contentType(ContentType.JSON)
+                .body(pet1)
+                .post("https://petstore.swagger.io/v2/pet")
+                .then()
+                .statusCode(200)
+                .extract()
+                .as(Pet.class);
+        //log.info(response.toString());
+        return pet1.id;
+    }
+}

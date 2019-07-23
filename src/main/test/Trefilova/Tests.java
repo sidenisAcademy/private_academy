@@ -15,7 +15,7 @@ public class Tests {
 
         step.createPetTest();
         step.requestTestId200();
-        step.deletePetTest();
-        step.requestTestId404();
+//        step.deletePetTest();
+//        step.requestTestId404();
     }
 }

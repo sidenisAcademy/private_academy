@@ -7,7 +7,7 @@ public class Steps {
 
     public void createPetTest() {
         petId = createPet();
-        System.out.println("New pet is created");
+        System.out.println("New pet is created " + petId);
     }
 
     public void requestTestId200() {
