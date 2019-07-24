@@ -1,18 +1,23 @@
 package REST_testing.Kutsenko.PetStore.PetControllers;
 
+import com.jayway.restassured.http.ContentType;
 import lombok.extern.slf4j.Slf4j;
+
 import static com.jayway.restassured.RestAssured.given;
 
 @Slf4j
 public class UserController {
 
+    private static final String basePath = "https://petstore.swagger.io/v2";
+    private static final String usersLogin = "/user/login";
 
-    static String userLogin(String login, String password) {
+    public static String userLogin(String login, String password) {
         String resp = given()
-                .queryParams("username",login, "password", password)
-                .header("accept", "application/json")
+                .basePath(basePath)
+                .queryParams("username", login, "password", password)
+                .accept(ContentType.JSON)
                 .when()
-                .get("https://petstore.swagger.io/v2/user/login")
+                .get(usersLogin)
                 .then()
                 .statusCode(200)
                 .extract()
@@ -22,13 +27,14 @@ public class UserController {
         return resp;
     }
 
-    static String userAuth(String login, String password) {
+    public static String userAuth(String login, String password) {
         String resp = given()
+                .basePath(basePath)
                 .auth()
                 .basic(login, password)
-                .header("accept", "application/json")
+                .accept(ContentType.JSON)
                 .when()
-                .get("https://petstore.swagger.io/v2/user/login")
+                .get(usersLogin)
                 .then()
                 .statusCode(200)
                 .extract()

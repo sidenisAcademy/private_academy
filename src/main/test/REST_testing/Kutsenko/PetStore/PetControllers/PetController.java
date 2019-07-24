@@ -11,7 +11,7 @@ import static com.jayway.restassured.RestAssured.given;
 @Slf4j
 public class PetController {
 
-    private static final String basePath = "https://petstore.swagger.io/v2/pet";
+    private static final String basePath = "https://petstore.swagger.io/v2";
     private static final String pets = "/pet";
     private static final String petWithId = "/pet/{petId}";
     private  static final String findByStatus = "/pet/findByStatus";
