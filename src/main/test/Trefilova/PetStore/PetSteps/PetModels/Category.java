@@ -1,8 +1,8 @@
-package Trefilova;
+package Trefilova.PetStore.PetSteps.PetModels;
 
 import lombok.Setter;
 
 public class Category {
-    public int id;
+    public long id;
     public String name;
 }

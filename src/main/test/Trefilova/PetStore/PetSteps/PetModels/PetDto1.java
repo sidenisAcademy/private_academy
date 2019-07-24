@@ -1,4 +1,4 @@
-package Trefilova;
+package Trefilova.PetStore.PetSteps.PetModels;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -7,7 +7,7 @@ import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class PetDto1 {
-    public int id;
+    public Integer id;
     public Category category;
     public String name;
     public List<String> photoUrls;
