@@ -34,34 +34,34 @@ public class PetSteps {
 
     }
 
-//    static void stepUserLogin(String login, String password) {
-//
-//        String resp = PetController.userLogin(login, password);
-//        System.out.println(resp);
-//
-//    }
-//
-//    static void stepSix(String login, String password) {
-//
-//        String resp = PetController.userAuth(login, password);
-//        System.out.println(resp);
-//
-//    }
+    static void stepUserLogin(String login, String password) {
 
-    static void stepSeven(String email, String password) {
+        String resp = PetController.userLogin(login, password);
+        System.out.println(resp);
+
+    }
+
+    static void stepUserAuth(String login, String password) {
+
+        String resp = PetController.userAuth(login, password);
+        System.out.println(resp);
+
+    }
+
+    static void stepRegisterSimpleServer(String email, String password) {
 
         String resp = PetController.registerSimpleServer(email, password);
         System.out.println(resp);
 
     }
 
-    static String stepEight(String email, String password) {
+    static String stepAuthSimpleServer(String email, String password) {
 
         return PetController.authSimpleServer(email, password);
 
     }
 
-    static void stepNine(String token) {
+    static void stepGetProtected(String token) {
 
         String msg = PetController.getProtected(token);
         System.out.println(msg);

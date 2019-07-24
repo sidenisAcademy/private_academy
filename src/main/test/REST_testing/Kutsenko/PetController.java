@@ -13,7 +13,8 @@ import static com.jayway.restassured.RestAssured.given;
 public class PetController {
 
     static void findeByStatus() {
-        Pet resp = given().queryParam("status","available")
+        Pet resp = given()
+                .queryParam("status","available")
                 .contentType(ContentType.JSON)
                 .when()
                 .get("https://petstore.swagger.io/v2/pet/findByStatus")
@@ -27,7 +28,8 @@ public class PetController {
     static Integer addPet(Integer id) {
         String bodyJson = "{ \"id\": " + id + ", \"category\": { \"id\": 0, \"name\": \"string\" }, \"name\": \"doggie\", \"photoUrls\": [ \"string\" ], \"tags\": [ { \"id\": 0, \"name\": \"string\" } ], \"status\": \"available\"}";
 
-        Pet resp = given().header("accept", "application/json")
+        Pet resp = given()
+                .header("accept", "application/json")
                 .contentType(ContentType.JSON)
                 .when()
                 .body(bodyJson)
@@ -41,7 +43,8 @@ public class PetController {
     }
 
     static Integer addPetWithPet(Pet newPet) {
-        Pet resp = given().header("accept", "application/json")
+        Pet resp = given()
+                .header("accept", "application/json")
                 .contentType(ContentType.JSON)
                 .when()
                 .body(newPet)
@@ -69,7 +72,8 @@ public class PetController {
     }
 
     static void deletePet(Integer id) {
-        String resp = given().header("accept", "application/json")
+        String resp = given()
+                .header("accept", "application/json")
                 .when()
                 .delete("https://petstore.swagger.io/v2/pet/" + id)
                 .then()
@@ -89,6 +93,37 @@ public class PetController {
                 .extract()
                 .asString();
         log.info("Response from PetSteps https://petstore.swagger.io/v2/pet/" + id + ": " + resp);
+    }
+
+    static String userLogin(String login, String password) {
+        String resp = given()
+                .queryParams("username",login, "password", password)
+                .header("accept", "application/json")
+                .when()
+                .get("https://petstore.swagger.io/v2/user/login")
+                .then()
+                .statusCode(200)
+                .extract()
+                .body()
+                .asString();
+        log.info("Response from https://petstore.swagger.io/v2/user/login: " + resp);
+        return resp;
+    }
+
+    static String userAuth(String login, String password) {
+        String resp = given()
+                .auth()
+                .basic(login, password)
+                .header("accept", "application/json")
+                .when()
+                .get("https://petstore.swagger.io/v2/user/login")
+                .then()
+                .statusCode(200)
+                .extract()
+                .body()
+                .asString();
+        log.info("Response from https://petstore.swagger.io/v2/user/login: " + resp);
+        return resp;
     }
 
     static String registerSimpleServer(String email, String password) {
