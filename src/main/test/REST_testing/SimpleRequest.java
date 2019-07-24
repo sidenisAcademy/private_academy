@@ -1,5 +1,6 @@
 package REST_testing;
 
+import Isabekov.DTO.DTO1;
 import com.jayway.restassured.http.ContentType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -13,12 +14,16 @@ public class SimpleRequest {
         String resp = given()
                 .contentType(ContentType.JSON)
                 .when()
-                .get("https://petstore.swagger.io/v2/pet/144")
+                .body("{\"email\":\"string\",\"password\":\"string\"}")
+                .post("http://172.16.12.25:5555/login")
                 .then()
                 .statusCode(200)
                 .extract()
-                .asString();
-        log.info("Response from https://petstore.swagger.io/v2/pet/144: " + resp);
+                .body().jsonPath().get("token");
+        log.info("token " + resp);
+
+        DTO1 dto = new DTO1();
+        dto.setEtag("123");
     }
 
     @Test
