@@ -10,15 +10,17 @@ public class TestRequests {
     @Test
     public void requestTest() {
 
-//        Integer newId = PetSteps.stepAddPet(604);
-//        PetSteps.stepGetPetById(newId);
-//        PetSteps.stepDeletePet(newId);
-//        PetSteps.stepCheckPetNotFound(newId);
-//        PetSteps.stepUserLogin("me", "123");
-//        PetSteps.stepSix("me1", "456");
-//        PetSteps.stepSeven("me1", "456");
-//        String token = PetSteps.stepEight("me1", "456");
-//        PetSteps.stepNine(token);
+        Integer newId = PetSteps.stepAddPet(604);
+        PetSteps.stepGetPetById(newId);
+        PetSteps.stepDeletePet(newId);
+        PetSteps.stepCheckPetNotFound(newId);
+
+        PetSteps.stepUserLogin("me", "123");
+        PetSteps.stepUserAuth("me1", "456");
+
+//        PetSteps.stepRegisterSimpleServer("me1", "456");
+        String token = PetSteps.stepAuthSimpleServer("me1", "456");
+        PetSteps.stepGetProtected(token);
 
         Integer newPetWithSetterId = PetSteps.stepAddPetWithSetter();
         PetSteps.stepGetPetById(newPetWithSetterId);
