@@ -23,12 +23,12 @@ public class Auth {
 
     private void auth1(){ String resp = given()
             .auth()
-            .basic("username", "password")
-            .when()
-            .get("https://petstore.swagger.io/v2/user/login")
-            .then()
-            .extract()
-            .asString();
+                .basic("username", "password")
+                .when()
+                .get("https://petstore.swagger.io/v2/user/login")
+                .then()
+                .extract()
+                .asString();
 
         log.info("\"https://petstore.swagger.io/v2/user/login" + resp);
     }
