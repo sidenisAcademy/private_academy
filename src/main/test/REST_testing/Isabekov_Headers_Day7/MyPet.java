@@ -54,7 +54,7 @@ public class MyPet {
                 .contentType(ContentType.JSON)
                 .header("accept", "application/json")
                 .when()
- //               .body()
+                .body(dto)
                 .post("https://petstore.swagger.io/v2/pet")
                 .then()
                 .statusCode(200)
@@ -63,11 +63,11 @@ public class MyPet {
         log.info("Response from https://petstore.swagger.io/v2/pet/144: " + resp);
     }
 
-    @Test
+    @Test //аннотация
     public void requestTest() {
 //        method();
 //        register();
 //        Login();
-        request_headers();
+        addPetStep();
     }
 }
