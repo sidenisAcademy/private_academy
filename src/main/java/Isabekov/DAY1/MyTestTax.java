@@ -1,5 +1,5 @@
 package Isabekov.DAY1;
-/*
+
 public class MyTestTax {
     public static void main(String[] args) {
         MyTax myTax = new MyTax();
@@ -22,4 +22,3 @@ public class MyTestTax {
 
     }
 }
-*/
