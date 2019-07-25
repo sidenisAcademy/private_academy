@@ -10,6 +10,8 @@ import static Trefilova.PetStore.PetController.PetController.*;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class PetSteps {
 
@@ -78,14 +80,16 @@ public class PetSteps {
     }
 
     public void checkPet() {
-        Assert.assertEquals(java.util.Optional.ofNullable(pet.id), 15);
-        Assert.assertEquals(pet.name, "Vasiliy");
-        Assert.assertEquals(pet.category.name, "Dog");
-        Assert.assertEquals(pet.status, "sold");
+        assertEquals(java.util.Optional.ofNullable(pet.id), 15);
+        assertEquals(pet.name, "Vasiliy");
+        assertEquals(pet.category.name, "Dog");
+        assertEquals(pet.status, "sold");
     }
 
     public void checkIfPetExists() {
         List<Pet> pet = findPetByStatus("available");
-        Assert.assertThat(pet, containsInAnyOrder(hasProperty("id", is(15))));
+        for(Pet p : pet) {
+            assertThat(pet, containsInAnyOrder(hasProperty("id", is(15))));
+        }
     }
 }
