@@ -58,8 +58,9 @@ public class MyPet {
                 .statusCode(200)
                 .extract()
                 .asString();
-        log.info("Response from https://petstore.swagger.io/v2/pet/144: " + resp);
+        log.info("Your pet has been added: " + resp);
     }
+
 
     @Test //аннотация
     public void requestTest() {

@@ -8,6 +8,7 @@ import com.jayway.restassured.response.Header;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static com.jayway.restassured.RestAssured.given;
@@ -28,8 +29,9 @@ public class PetController {
                 .extract().as(PetDto.class);
         log.info("your pet has been posted: " + pet1.getId());
     }
-    public String request_pet() {
-        String resp = given()
+
+    public PetDto request_pet() {
+        PetDto resp = given()
                 .queryParam("status", "Sold")
                 .contentType(ContentType.JSON)
 //                .header("accept", "application/xml")
@@ -37,10 +39,27 @@ public class PetController {
                 .get("https://petstore.swagger.io/v2/pet/8")
                 .then()
                 .statusCode(200)
+                .extract().as(PetDto.class);
+        log.info("Here is your pet: " + resp); // контроллер создаст сам dto и засунет туда все возвращенные данные
+        return resp;
+
+    }
+
+
+    public String request_petList() {
+        String resp = given()
+                .queryParam("status", "Sold")
+                .contentType(ContentType.JSON)
+//                .header("accept", "application/xml")
+                .when()
+                .get("https://petstore.swagger.io/v2/pet/findByStatus?status=sold")
+                .then()
+                .statusCode(200)
                 .extract()
                 .asString();
-        log.info("Here is your pet: " + resp);
+        log.info("the list of sold pets: " + resp);
         return resp;
+//        System.out.println(Arrays.toString(resp));
     }
 }
 
