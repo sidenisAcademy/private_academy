@@ -1,5 +1,6 @@
-package Nakhanov.REST;
+package Nakhanov.REST.REST_1st_Day;
 
+import Nakhanov.REST.PetDTO.Pet;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +11,7 @@ import static com.jayway.restassured.RestAssured.given;
 @Slf4j
 public class Controller {
 
-    public static String petRequestById(int id, int code) {
+    public static String petRequestById(long id, int code) {
         String resp = given()
                 .contentType(ContentType.JSON)
                 .when()

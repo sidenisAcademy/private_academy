@@ -1,4 +1,4 @@
-package Nakhanov.REST;
+package Nakhanov.REST.PetDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +13,7 @@ import java.util.List;
 public class Pet {
 
 
-    public Integer id;
+    public long id;
     public Category category;
     public String name;
     public List<String> photoUrls;

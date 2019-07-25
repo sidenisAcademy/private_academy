@@ -1,0 +1,18 @@
+{
+"id": 6699,
+"category": {
+  "id": 25,
+  "name": "Sobaka"
+},
+"name": "doggie",
+"photoUrls": [
+  "sobaka.jpg"
+],
+"tags": [
+{
+  "id": 43,
+  "name": "Sobaka-ubivaka"
+}
+],
+"status": "available"
+}
