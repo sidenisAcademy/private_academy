@@ -1,4 +1,4 @@
-package REST_testing;
+package REST_testing.example;
 
 import Isabekov.Day6.PetDto;
 import com.jayway.restassured.http.ContentType;

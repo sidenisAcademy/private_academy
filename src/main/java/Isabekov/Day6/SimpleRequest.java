@@ -1,12 +1,15 @@
-package REST_testing;
+/*
+package Isabekov.Day6;
+ */
 
-import Isabekov.Day6.PetDto;
 import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.response.Header;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.util.List;
+
 import static com.jayway.restassured.RestAssured.given;
-import static com.jayway.restassured.RestAssured.sessionId;
 
 @Slf4j
 public class SimpleRequest {
@@ -23,32 +26,10 @@ public class SimpleRequest {
                 .statusCode(200)
                 .extract()
                 .asString();
-        log.info("Response from https://petstore.swagger.io/v2/pet/144: " + resp);
+//        log.info("Response from https://petstore.swagger.io/v2/pet/144: " + resp);
     }
-
-    private int request_id() {   // всегда в описании метода надо писать какой тип данныж он будет возвращать
-
-
-        PetDto resp = given()
-//                .queryParam("status", "available")
-                .contentType(ContentType.JSON)
-//                .header("accept", "application/xml")
-                .when()
-                .get("https://petstore.swagger.io/v2/pet/7")
-                .then()
-                .statusCode(200)
-                .extract()
-                .as(PetDto.class);
-        resp.getId();
-        log.info("Here is your " + resp.toString());
-        return resp.getId();  //конец метода, после него ничего не возвращается.
-
-    }
-
-
-/*
-        private void request_id1() {
-        String resp = given()
+    private void request_id() {
+        List<Header> resp = given()
                 .queryParam("status", "available")
                 .contentType(ContentType.JSON)
 //                .header("accept", "application/xml")
@@ -56,9 +37,31 @@ public class SimpleRequest {
                 .get("https://petstore.swagger.io/v2/pet/7")
                 .then()
                 .statusCode(200)
-                .extract()
-                .asString();
-        log.info("Here is your pet https://petstore.swagger.io/v2/pet/144: " + resp);
+                .extract().headers()
+                .asList();
+
+        for(int i = 0; i<resp.size(); i++){
+            log.info("Here are your headers " + resp.get(i));
+        }
+
+
+
+//        log.info("Here is your pet https://petstore.swagger.io/v2/pet/144: " + resp);
+    }
+// stream имеет разные функции, он может фильтровать.
+/*
+    private void request_id() {
+            String resp = given()
+                    .queryParam("status", "available")
+                    .contentType(ContentType.JSON)
+//                .header("accept", "application/xml")
+                    .when()
+                    .get("https://petstore.swagger.io/v2/pet/7")
+                    .then()
+                    .statusCode(200)
+                    .extract()
+                    .asString();
+            log.info("Here is your pet https://petstore.swagger.io/v2/pet/144: " + resp);
     }
 
     private void request_delete() {
@@ -88,7 +91,7 @@ public class SimpleRequest {
         log.info("Here is your pet https://petstore.swagger.io/v2/pet/144: " + resp);
     }
 
- */
+
     @Test
     public void requestTest() {
         request();
@@ -96,4 +99,6 @@ public class SimpleRequest {
 //        request_delete();
 //        request_id2();
     }
+
+ */
 }
