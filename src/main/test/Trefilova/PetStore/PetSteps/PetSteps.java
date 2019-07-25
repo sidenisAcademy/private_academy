@@ -65,8 +65,12 @@ public class PetSteps {
         findPetById(pet.id, 404);
     }
 
-    public void findPetByStatusStep() {
+    public void findPetByStatusAvailableStep() {
         findPetByStatus("available");
+    }
+
+    public void findPetByStatusSoldStep() {
+        findPetByStatus("sold");
     }
 
     public void deletePetStep() {

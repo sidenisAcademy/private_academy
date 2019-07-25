@@ -27,14 +27,14 @@ public class PetTests {
     @Test
     public void TestPet2() {
         step.addNewPetStep();
-        step.findPetByStatusStep();
+        step.findPetByStatusAvailableStep();
         step.checkIfPetExists();
     }
 
     @Test
     public void TestPet3() {
         step.addNewPetStep();
-        step.findPetByStatusStep();
+        step.findPetByStatusSoldStep();
     }
 
     @Test

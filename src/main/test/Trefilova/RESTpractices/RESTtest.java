@@ -16,8 +16,8 @@
 //        findPetById();
 //    }
 //
-//    public void findPetByStatusStep() {
-//        findPetByStatusStep();
+//    public void findPetByStatusAvailableStep() {
+//        findPetByStatusAvailableStep();
 //    }
 //
 //    public void deletePetStep() {
