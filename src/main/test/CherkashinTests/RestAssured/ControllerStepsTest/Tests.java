@@ -2,12 +2,10 @@ package CherkashinTests.RestAssured.ControllerStepsTest;
 
 import org.junit.Test;
 
-public class Tests extends Controller {
+public class Tests {
     @Test
-    public void requesttest() {
-        Integer id = PostPet();
-        GetPet(id);
-        DelPet(id);
-        GetDeletedPet(id);
+    public void checkingResults() {
+        Steps firstTest = new Steps();
+        firstTest.result();
     }
 }

@@ -1,6 +1,5 @@
 package CherkashinTests.RestAssured.ControllerStepsTest;
 
-import CherkashinTests.RestAssured.PetDto;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Header;
 import lombok.extern.slf4j.Slf4j;
@@ -9,34 +8,32 @@ import static com.jayway.restassured.RestAssured.given;
 
 @Slf4j
 public class Controller {
-    public Integer PostPet() {
-        String body = "{ \"id\": 667, \"category\": { \"id\": 667, \"name\": \"Ivan\" }, \"name\": \"Pes\", \"photoUrls\": [ \"string\" ], \"tags\": [ { \"id\": 0, \"name\": \"string\" } ], \"status\": \"available\"}";
-        PetDto postpet = given()
+
+    public void PostPet(String JSON) {
+        String post = given()
                 .contentType(ContentType.JSON)
                 .header(new Header("accept", "application/json"))
                 .when()
-                .body(body)
+                .body(JSON)
                 .post("https://petstore.swagger.io/v2/pet")
                 .then()
                 .statusCode(200)
                 .extract()
-                .as(PetDto.class);
-        log.info("Post pet in https://petstore.swagger.io/v2/pet" + postpet);
-        return (postpet.id);
+                .asString();
+        log.info("Pet created");
     }
 
     public void GetPet(Integer id) {
-        PetDto getpet = given()
+        String getpet = given()
                 .contentType(ContentType.JSON)
                 .when()
                 .get("https://petstore.swagger.io/v2/pet/" + id)
                 .then()
                 .statusCode(200)
                 .extract()
-                .as(PetDto.class);
-        log.info("Pet getted from https://petstore.swagger.io/v2/pet/" + id + getpet);
+                .asString();
+        log.info("Pet getted from https://petstore.swagger.io/v2/pet/" + id);
     }
-
 
     public void DelPet(Integer id) {
         String delpet = given()
@@ -47,9 +44,8 @@ public class Controller {
                 .statusCode(200)
                 .extract()
                 .asString();
-        log.info("Pet deleted on https://petstore.swagger.io/v2/pet/" + id + delpet);
+        log.info("Pet deleted on https://petstore.swagger.io/v2/pet/" + id);
     }
-
 
     public void GetDeletedPet(Integer id) {
         String getdelpet = given()
@@ -60,6 +56,6 @@ public class Controller {
                 .statusCode(404)
                 .extract()
                 .asString();
-        log.info("Getting 404 after deleting pet" + getdelpet);
+        log.info("Getting 404 after deleting pet with id " + id);
     }
 }
