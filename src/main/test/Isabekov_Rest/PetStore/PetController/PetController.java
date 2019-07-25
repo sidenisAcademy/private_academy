@@ -7,7 +7,9 @@ import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Header;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+
 import java.util.List;
+
 import static com.jayway.restassured.RestAssured.given;
 
 @Slf4j
@@ -15,30 +17,33 @@ public class PetController {
 
 
     public void pushPet(PetDto pet) {
-        given()
+        log.info("pet: " + pet.getId());
+        PetDto pet1 = given()
                 .contentType(ContentType.JSON)
                 .when()
                 .body(pet)
                 .post("https://petstore.swagger.io/v2/pet")
                 .then()
-                .statusCode(200);
+                .statusCode(200)
+                .extract().as(PetDto.class);
+        log.info("your pet has been posted: " + pet1.getId());
+    }
+    public String request_pet() {
+        String resp = given()
+                .queryParam("status", "Sold")
+                .contentType(ContentType.JSON)
+//                .header("accept", "application/xml")
+                .when()
+                .get("https://petstore.swagger.io/v2/pet/8")
+                .then()
+                .statusCode(200)
+                .extract()
+                .asString();
+        log.info("Here is your pet: " + resp);
+        return resp;
     }
 }
-//    public String request_id() {
-//        String resp = given()
-//                .queryParam("status", "available")
-//                .contentType(ContentType.JSON)
-////                .header("accept", "application/xml")
-//                .when()
-//                .get("https://petstore.swagger.io/v2/pet/8")
-//                .then()
-//                .statusCode(200)
-//                .extract()
-//                .asString();
-//        log.info("Here is your pet: " + resp);
-//        return resp;
-//    }
-//
+
 //    private void request_id2() {
 //        String resp = given()
 //                .queryParam("status", "available")
@@ -58,6 +63,7 @@ public class PetController {
 //        pushPet();
 //    }
 //}
+
 
 //получил Pet
 //6198 [main] INFO Isabekov_Rest.PetStore.PetController.PetController - Here is your pet:

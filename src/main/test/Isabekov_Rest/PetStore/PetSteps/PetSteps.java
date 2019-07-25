@@ -5,6 +5,9 @@ import Isabekov_Rest.PetStore.PetController.PetController;
 import com.jayway.restassured.http.ContentType;
 import Isabekov_Rest.PetStore.PetSteps.PetModels.PetDto;
 
+import java.awt.*;
+import java.sql.SQLOutput;
+
 import static com.jayway.restassured.RestAssured.given;
 
 // создаю конерктного питомца на основе существующей DTO - генерим
@@ -17,6 +20,7 @@ public class PetSteps {
 //        String str = petController.request_id();
         PetDto Sharik = addPetStep(); // проинициализировать все параметры
         petController.pushPet(Sharik); // Отдаем созданного на бэк
+        petController.request_pet();
     }
     public PetDto addPetStep() {
 
@@ -27,7 +31,7 @@ public class PetSteps {
 // заполнить dto, отправить, проверить.
 
         String[] str = new String[1];
-        str[0] = "123";
+        str[0] = "http://pet8";
 
         Category[] tags = new Category[2];
         tags[0] = cat;
@@ -41,5 +45,7 @@ public class PetSteps {
 
 return petDto;
     }
+
+
 
 }
