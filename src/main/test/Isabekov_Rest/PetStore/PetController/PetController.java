@@ -19,7 +19,7 @@ public class PetController {
                 .contentType(ContentType.JSON)
                 .when()
                 .body(pet)
-                .get("https://petstore.swagger.io/v2/pe")
+                .post("https://petstore.swagger.io/v2/pet")
                 .then()
                 .statusCode(200);
     }
@@ -55,7 +55,7 @@ public class PetController {
 //
 //    @Test
 //    public void requestTest() {
-//        request_id();
+//        pushPet();
 //    }
 //}
 

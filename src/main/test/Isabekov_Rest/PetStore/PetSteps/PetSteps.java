@@ -8,14 +8,15 @@ import Isabekov_Rest.PetStore.PetSteps.PetModels.PetDto;
 import static com.jayway.restassured.RestAssured.given;
 
 // создаю конерктного питомца на основе существующей DTO - генерим
+// описать end-point на который мы отправляем PET
 public class PetSteps {
 
     PetController petController = new PetController();
 
-    public void createPet() {
+    public void createPetStep() {
 //        String str = petController.request_id();
         PetDto Sharik = addPetStep(); // проинициализировать все параметры
-        petController.pushPet(Sharik); // Отдаем созданного
+        petController.pushPet(Sharik); // Отдаем созданного на бэк
     }
     public PetDto addPetStep() {
 
