@@ -15,7 +15,7 @@ public class PetSteps {
     public void createPet() {
 //        String str = petController.request_id();
         PetDto Sharik = addPetStep(); // проинициализировать все параметры
-        petController.pushPet(Sharik);
+        petController.pushPet(Sharik); // Отдаем созданного
     }
     public PetDto addPetStep() {
 
