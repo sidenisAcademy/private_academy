@@ -5,7 +5,7 @@ import lombok.Setter;
 @Setter
 public class CategoryOrTags {
 
-    public Integer id;
+    public Long id;
     public String name;
 
 }

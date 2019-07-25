@@ -1,77 +1,87 @@
 package REST_testing.Kutsenko.PetStore.PetSteps;
 
 import REST_testing.Kutsenko.PetStore.PetSteps.PetModels.CategoryOrTags;
-import REST_testing.Kutsenko.PetStore.PetSteps.PetModels.Pet;
+import REST_testing.Kutsenko.PetStore.PetSteps.PetModels.PetDto;
 import REST_testing.Kutsenko.PetStore.PetControllers.PetController;
-import com.jayway.restassured.response.Header;
+import lombok.extern.slf4j.Slf4j;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
+@Slf4j
 public class PetSteps {
 
-    public static void stepAddPet(Integer petId, Integer categoryId, String categoryName, String petName, String[] photoUrls, String status) {
-
-        String bodyJson = "{ \"id\": " + petId + ", \"category\": { \"id\": " + categoryId + ", \"name\": " + categoryName + " }, \"name\": " + petName + ", \"photoUrls\": " + photoUrls + ", \"tags\": null, \"status\": " + petName + "}";
+    public static void stepAddPet(Long petId, Long categoryId, String categoryName, String petName, String[] photoUrls, String status) {
+        String strPhotoUrls = null;
+        if (photoUrls != null) {
+            strPhotoUrls = "[ \"" + String.join("\", \"", photoUrls) + "\" ]";
+        }
+        String bodyJson = "{ \"id\": "
+                + petId + ", \"category\": { \"id\": "
+                + categoryId + ", \"name\": \""
+                + categoryName + "\" }, \"name\": \""
+                + petName + "\", \"photoUrls\": "
+                + strPhotoUrls + ", \"tags\": null, \"status\": \""
+                + petName + "\"}";
         PetController.addPet(bodyJson);
 
     }
 
-    public static void stepEditPet(Integer petId, Integer categoryId, String categoryName, String petName, String[] photoUrls, String status) {
+    public static void stepEditPet(Long petId, Long categoryId, String categoryName, String petName, String[] photoUrls, String status) {
 
         CategoryOrTags category = new CategoryOrTags();
         category.setId(categoryId);
         category.setName(categoryName);
 
-        Pet modifiedPet = new Pet(petId, category, petName, photoUrls, null, status);
+        PetDto modifiedPet = new PetDto(petId, category, petName, photoUrls, null, status);
 
         PetController.editPet(modifiedPet);
 
     }
 
-    public static void stepGetPetById(Integer id) {
+    public static void stepGetPetById(Long id) {
 
         PetController.getPetById(id);
 
     }
 
-    public static void stepCheckPetFields(Integer petId, Integer categoryId, String categoryName, String petName, String[] photoUrls, String status) {
+    public static void stepCheckPetFields(Long petId, Long categoryId, String categoryName, String petName, String[] photoUrls, String status) {
 
-        Pet petById = PetController.getPetById(petId);
+        PetDto petById = PetController.getPetById(petId);
+
         assertEquals(petById.category.id, categoryId);
         assertEquals(petById.category.name, categoryName);
         assertEquals(petById.name, petName);
         assertArrayEquals(petById.photoUrls, photoUrls);
-        assertArrayEquals(petById.tags,null);
+        assertArrayEquals(petById.tags, null);
         assertEquals(petById.status, status);
 
     }
 
 
-    public static void stepDeletePet(Integer id) {
+    public static void stepDeletePet(Long id) {
 
         PetController.deletePet(id);
 
     }
 
-    public static void stepCheckPetNotFound(Integer id) {
+    public static void stepCheckPetNotFound(Long id) {
 
         PetController.checkPetNotFound(id);
 
     }
 
-    public static void stepAddPetWithSetter(Integer petId, Integer categoryId, String categoryName, String petName, String[] photoUrls, String status) {
+    public static void stepAddPetWithSetter(Long petId, Long categoryId, String categoryName, String petName, String[] photoUrls, String status) {
 
         CategoryOrTags category = new CategoryOrTags();
         category.setId(categoryId);
         category.setName(categoryName);
 
-        Pet newPet = new Pet();
+        PetDto newPet = new PetDto();
         newPet.setId(petId);
         newPet.setCategory(category);
         newPet.setName(petName);
@@ -83,25 +93,25 @@ public class PetSteps {
 
     }
 
-    public static void stepAddPetWithAllArgsConstructor(Integer petId, Integer categoryId, String categoryName, String petName, String[] photoUrls, String status) {
+    public static void stepAddPetWithAllArgsConstructor(Long petId, Long categoryId, String categoryName, String petName, String[] photoUrls, String status) {
 
         CategoryOrTags category = new CategoryOrTags();
         category.setId(categoryId);
         category.setName(categoryName);
 
-        Pet newPet = new Pet(petId, category, petName, photoUrls, null, status);
+        PetDto newPet = new PetDto(petId, category, petName, photoUrls, null, status);
 
         PetController.addPetWithPetInstance(newPet);
 
     }
 
-    public static void stepAddPetWithBuilder(Integer petId, Integer categoryId, String categoryName, String petName, String[] photoUrls, String status) {
+    public static void stepAddPetWithBuilder(Long petId, Long categoryId, String categoryName, String petName, String[] photoUrls, String status) {
 
         CategoryOrTags category = new CategoryOrTags();
         category.setId(categoryId);
         category.setName(categoryName);
 
-        Pet newPet = Pet.builder().id(petId).category(category).name(petName).photoUrls(photoUrls).tags(null).status(status).build();
+        PetDto newPet = PetDto.builder().id(petId).category(category).name(petName).photoUrls(photoUrls).tags(null).status(status).build();
 
         PetController.addPetWithPetInstance(newPet);
 
@@ -109,17 +119,50 @@ public class PetSteps {
 
     public static void stepGetPetsByStatus(String status) {
 
-       PetController.getPetsByStatus(status);
+        PetController.getPetsByStatus(status);
+
+    }
+
+    public static void stepCheckPetIsExist(Long petId, String status) {
+
+        PetDto myPet = PetController.getPetById(petId);
+        List<PetDto> arPets = PetController.getPetsByStatus(status);
+        Boolean isExist = false;
+        for (PetDto pet : arPets) {
+            if (
+                    myPet.id.equals(pet.id) &&
+                            myPet.category.id.equals(pet.category.id) &&
+                            myPet.category.name.equals(pet.category.name) &&
+                            myPet.name.equals(pet.name) &&
+                            myPet.status.equals(pet.status)
+                    ) {
+                isExist = true;
+                break;
+            }
+        }
+        assertTrue("Pet with status available is not in array Pets with status available", isExist);
 
     }
 
 
-    public static void stepCheckPetIsExist(Integer petId, Integer categoryId, String categoryName, String petName, String status) {
+    public static void stepCheckPetIsNotExist(Long petId, String status) {
 
-        Pet[] arPets = PetController.getPetsByStatus(status);
-
-        // TODO add assert
+        PetDto myPet = PetController.getPetById(petId);
+        List<PetDto> arPets = PetController.getPetsByStatus(status);
+        Boolean isExist = false;
+        for (PetDto pet : arPets) {
+            if (
+                    myPet.id.equals(pet.id) &&
+                            myPet.category.id.equals(pet.category.id) &&
+                            myPet.category.name.equals(pet.category.name) &&
+                            myPet.name.equals(pet.name) &&
+                            myPet.status.equals(pet.status)
+                    ) {
+                isExist = true;
+                break;
+            }
+        }
+        assertFalse("Pet with status available is in array Pets with status sold", isExist);
 
     }
-
 }

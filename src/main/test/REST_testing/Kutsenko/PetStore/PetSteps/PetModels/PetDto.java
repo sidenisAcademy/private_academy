@@ -9,9 +9,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Pet {
+public class PetDto {
 
-    public Integer id;
+    public Long id;
     public CategoryOrTags category;
     public String name;
     public String[] photoUrls;

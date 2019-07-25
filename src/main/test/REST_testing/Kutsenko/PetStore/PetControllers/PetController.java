@@ -1,9 +1,10 @@
 package REST_testing.Kutsenko.PetStore.PetControllers;
 
-import REST_testing.Kutsenko.PetStore.PetSteps.PetModels.Pet;
-import com.jayway.restassured.http.ContentType;
+import REST_testing.Kutsenko.PetStore.PetSteps.PetModels.PetDto;
+import REST_testing.Kutsenko.PetStore.Utils.Spec;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static com.jayway.restassured.RestAssured.given;
@@ -11,109 +12,100 @@ import static com.jayway.restassured.RestAssured.given;
 @Slf4j
 public class PetController {
 
-    private static final String basePath = "https://petstore.swagger.io/v2";
-    private static final String pets = "/pet";
-    private static final String petWithId = "/pet/{petId}";
-    private  static final String findByStatus = "/pet/findByStatus";
+    private static final String pet = "/pet";
+    private static final String petWithId = "/pet/{id}";
+    private static final String findByStatus = "/pet/findByStatus";
 
     public static void addPet(String bodyJson) {
-        Pet resp = given()
-                .basePath(basePath)
-                .contentType(ContentType.JSON)
-                .accept(ContentType.JSON)
+        PetDto resp = given()
+                .spec(Spec.initRequestSpec())
                 .when()
                 .body(bodyJson)
-                .post(pets)
+                .post(pet)
                 .then()
-                .statusCode(200)
+                .spec(Spec.initResponseSpec())
                 .extract()
-                .as(Pet.class);
-        log.info("Response from https://petstore.swagger.io/v2/pet: " + resp);
+                .as(PetDto.class);
+        log.info("POST response from https://petstore.swagger.io/v2/pet: " + resp);
     }
 
-    public static void addPetWithPetInstance(Pet newPet) {
-        Pet resp = given()
-                .basePath(basePath)
-                .contentType(ContentType.JSON)
-                .accept(ContentType.JSON)
+    public static void addPetWithPetInstance(PetDto newPet) {
+        PetDto resp = given()
+                .spec(Spec.initRequestSpec())
                 .when()
                 .body(newPet)
-                .post(pets)
+                .post(pet)
                 .then()
-                .statusCode(200)
+                .spec(Spec.initResponseSpec())
                 .extract()
-                .as(Pet.class);
-        log.info("Response from https://petstore.swagger.io/v2/pet: " + resp);
+                .as(PetDto.class);
+        log.info("POST response from https://petstore.swagger.io/v2/pet: " + resp);
     }
 
-    public static void editPet(Pet modifiedPet) {
-        Pet resp = given()
-                .basePath(basePath)
-                .pathParam("petId", modifiedPet.id)
-                .contentType(ContentType.JSON)
-                .accept(ContentType.JSON)
+    public static void editPet(PetDto modifiedPet) {
+        PetDto resp = given()
+                .spec(Spec.initRequestSpec())
                 .when()
                 .body(modifiedPet)
-                .put(petWithId)
+                .put(pet)
                 .then()
-                .statusCode(200)
+                .spec(Spec.initResponseSpec())
                 .extract()
-                .as(Pet.class);
-        log.info("Response from https://petstore.swagger.io/v2/pet: " + resp);
+                .as(PetDto.class);
+        log.info("PUT response from https://petstore.swagger.io/v2/pet: " + resp);
     }
 
-    public static Pet getPetById(Integer id) {
-        Pet resp = given()
-                .basePath(basePath)
-                .pathParam("petId", id)
-                .accept(ContentType.JSON)
+    public static PetDto getPetById(Long id) {
+        PetDto resp = given()
+                .spec(Spec.initRequestSpec())
                 .when()
-                .get(petWithId)
+                .get(petWithId, id)
                 .then()
-                .statusCode(200)
+                .spec(Spec.initResponseSpec())
                 .extract()
-                .as(Pet.class);
-        log.info("Response from https://petstore.swagger.io/v2/pet/" + id + ": " + resp);
+                .as(PetDto.class);
+        log.info("GET response from https://petstore.swagger.io/v2/pet/" + id + ": " + resp);
         return resp;
     }
 
-    public static Pet[] getPetsByStatus(String status) {
-        Pet[] resp = given()
-                .basePath(basePath)
+    public static List<PetDto> getPetsByStatus(String status) {
+        PetDto[] resp = given()
+                .spec(Spec.initRequestSpec())
                 .queryParam("status", status)
-                .accept(ContentType.JSON)
                 .when()
                 .get(findByStatus)
                 .then()
-                .statusCode(200)
+                .spec(Spec.initResponseSpec())
                 .extract()
-                .as(Pet[].class);
-        log.info("Response from https://petstore.swagger.io/v2/pet/findByStatus: " + resp);
-        return resp;
+                .as(PetDto[].class);
+        log.info("GET response from https://petstore.swagger.io/v2/pet/findByStatus?status=" + status + ":");
+        List<PetDto> arPets = Arrays.asList(resp);
+        arPets.forEach(pet -> log.info(pet.toString()));
+        return arPets;
     }
 
-    public static void deletePet(Integer id) {
+    public static void deletePet(Long id) {
         String resp = given()
-                .header("accept", "application/json")
+                .spec(Spec.initRequestSpec())
                 .when()
-                .delete("https://petstore.swagger.io/v2/pet/" + id)
+                .delete(petWithId, id)
                 .then()
-                .statusCode(200)
+                .spec(Spec.initResponseSpec())
                 .extract()
                 .asString();
-        log.info("Response from delete https://petstore.swagger.io/v2/pet/" + id + ": " + resp);
+        log.info("DELETE from https://petstore.swagger.io/v2/pet/" + id + " successfully");
     }
 
-    public static void checkPetNotFound(Integer id) {
+    public static void checkPetNotFound(Long id) {
         String resp = given()
-                .contentType(ContentType.JSON)
+                .spec(Spec.initRequestSpec())
                 .when()
-                .get("https://petstore.swagger.io/v2/pet/" + id)
+                .get(petWithId, id)
                 .then()
                 .statusCode(404)
                 .extract()
                 .asString();
-        log.info("Response from PetSteps https://petstore.swagger.io/v2/pet/" + id + ": " + resp);
+        log.info("GET response from https://petstore.swagger.io/v2/pet/" + id + " (expected status code - 404): " + resp);
     }
 
 }

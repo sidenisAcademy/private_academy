@@ -6,15 +6,13 @@ public class UserSteps {
 
     public static void stepUserLogin(String login, String password) {
 
-        String resp = UserController.userLogin(login, password);
-        System.out.println(resp);
+        UserController.userLogin(login, password);
 
     }
 
     public static void stepUserLoginWithAuthBasic(String login, String password) {
 
-        String resp = UserController.userAuth(login, password);
-        System.out.println(resp);
+        UserController.userAuth(login, password);
 
     }
 

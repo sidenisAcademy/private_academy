@@ -1,6 +1,6 @@
 package REST_testing.Kutsenko.PetStore.PetControllers;
 
-import com.jayway.restassured.http.ContentType;
+import REST_testing.Kutsenko.PetStore.Utils.Spec;
 import lombok.extern.slf4j.Slf4j;
 
 import static com.jayway.restassured.RestAssured.given;
@@ -8,40 +8,35 @@ import static com.jayway.restassured.RestAssured.given;
 @Slf4j
 public class UserController {
 
-    private static final String basePath = "https://petstore.swagger.io/v2";
     private static final String usersLogin = "/user/login";
 
-    public static String userLogin(String login, String password) {
+    public static void userLogin(String login, String password) {
         String resp = given()
-                .basePath(basePath)
+                .spec(Spec.initRequestSpec())
                 .queryParams("username", login, "password", password)
-                .accept(ContentType.JSON)
                 .when()
                 .get(usersLogin)
                 .then()
-                .statusCode(200)
+                .spec(Spec.initResponseSpec())
                 .extract()
                 .body()
                 .asString();
-        log.info("Response from https://petstore.swagger.io/v2/user/login: " + resp);
-        return resp;
+        log.info("GET response from https://petstore.swagger.io/v2/user/login: " + resp);
     }
 
-    public static String userAuth(String login, String password) {
+    public static void userAuth(String login, String password) {
         String resp = given()
-                .basePath(basePath)
+                .spec(Spec.initRequestSpec())
                 .auth()
                 .basic(login, password)
-                .accept(ContentType.JSON)
                 .when()
                 .get(usersLogin)
                 .then()
-                .statusCode(200)
+                .spec(Spec.initResponseSpec())
                 .extract()
                 .body()
                 .asString();
-        log.info("Response from https://petstore.swagger.io/v2/user/login: " + resp);
-        return resp;
+        log.info("GET response from https://petstore.swagger.io/v2/user/login: " + resp);
     }
 
 }
