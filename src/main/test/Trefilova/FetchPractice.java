@@ -13,16 +13,16 @@ public class FetchPractice {
     public static void main(String[] args) {
 
         String response = given()
-                .config(RestAssuredConfig.config().sslConfig(new SSLConfig().relaxedHTTPSValidation()))
+                .relaxedHTTPSValidation()
                 .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
                 .cookie("csrftokenn", "TX8Tzc9D7kXvzJOK8qbhXyGWwNQLSw5mGo1WXclX2oZYNp8fNielb7PjvqEUMApp")
-                .sessionId("2bm52x39rccrvzbyf9lj2cmiwieqhvuo")
+                .cookie("sessionid", "2bm52x39rccrvzbyf9lj2cmiwieqhvuo")
                 .when()
                 .get("https://timemaster-dev2.sidenis.local/api/whoami/")
                 .then()
                 .extract()
-                .response().asString();
+                .asString();
 
         System.out.println(response);
     }
