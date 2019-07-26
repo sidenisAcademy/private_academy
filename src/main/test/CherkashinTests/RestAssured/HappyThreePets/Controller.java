@@ -23,35 +23,36 @@ public class Controller {
                 .statusCode(200)
                 .extract()
                 .as(PetDto.class);
-        log.info("Pet Created");
+        log.info("Pet Created: " + post.id);
     }
 
-     public void gettingPet (PetDto petDto) {
-         PetDto get = given()
-                 .contentType(ContentType.JSON)
-                 .when()
-                 .get("https://petstore.swagger.io/v2/pet/" + petDto.id)
-                 .then()
-                 .statusCode(200)
-                 .extract()
-                 .as(PetDto.class);
-         log.info("Pet Getted " + " " + petDto.name + " " + petDto.status);
-     }
+    public PetDto gettingPet(Integer id) {
+        PetDto get = given()
+                .contentType(ContentType.JSON)
+                .when()
+                .get("https://petstore.swagger.io/v2/pet/" + id)
+                .then()
+                .statusCode(200)
+                .extract()
+                .as(PetDto.class);
+        log.info("Pet Getted: " + get.id);
+        return get;
+    }
 
-     public void putChanges (PetDto petDto) {
-         PetDto put = given()
-                 .contentType(ContentType.JSON)
-                 .when()
-                 .body(petDto)
-                 .put("https://petstore.swagger.io/v2/pet" + petDto.id)
-                 .then()
-                 .statusCode(200)
-                 .extract()
-                 .as(PetDto.class);
-         log.info("Pet " + petDto.id + " is changed");
-     }
+    public void putChanges(PetDto petDto) {
+        PetDto put = given()
+                .contentType(ContentType.JSON)
+                .when()
+                .body(petDto)
+                .put("https://petstore.swagger.io/v2/pet")
+                .then()
+                .statusCode(200)
+                .extract()
+                .as(PetDto.class);
+        log.info("Pet " + petDto.id + " is changed");
+    }
 
-     public void delPet (PetDto petDto) {
+    public void delPet(PetDto petDto) {
         PetDto del = given()
                 .contentType(ContentType.JSON)
                 .when()
