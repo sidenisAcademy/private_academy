@@ -56,6 +56,21 @@ public class PetController {
 
     }
 
+    public PetDto remove_pet() {
+        PetDto resp = given()
+                .queryParam("status", "Sold")
+                .contentType(ContentType.JSON)
+//                .header("accept", "application/xml")
+                .when()
+                .delete("https://petstore.swagger.io/v2/pet/8")
+                .then()
+                .statusCode(200)
+                .extract().as(PetDto.class);
+        log.info("Your pet has been killed: " + resp); // контроллер создаст сам dto и засунет туда все возвращенные данные
+        return resp;
+
+    }
+
     public PetDto request_pet(long id) {
         PetDto resp = given()
                 .queryParam("status", "Sold")

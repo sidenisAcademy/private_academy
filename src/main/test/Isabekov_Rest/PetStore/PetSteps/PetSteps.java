@@ -16,16 +16,17 @@ public class PetSteps {
 //        String str = petController.request_id();
         PetDto Sharik = addPetStep(); // проинициализировать все параметры
         petController.pushPet(Sharik); // Отдаем созданного на бэк
-        updatePetStep();        // изменяем имя категории и статус
+        updatePetStep3();        // изменяем имя категории и статус
 //        petController.request_pet();
     }
 
-    public void updatePetStep(){
+    public void updatePetStep3(){
        PetDto pet =  petController.request_pet(8L); //вызываем PET из экземпляра класса
         pet.setStatus("available");
 //        pet.setCategory(); -  правильней создать категорию
         pet.category.name = "Barbos"; //можно перезадать имя и оно перетрет то что мы создали вначале
-    petController.changePet(pet);           // отпрвляем на бэк, используя changePet
+        petController.changePet(pet);           // отпрвляем на бэк, используя changePet
+//        petController.remove_pet();
     }
 
     public PetDto addPetStep() {
@@ -64,3 +65,5 @@ public class PetSteps {
     }
 
 }
+
+// как удалить питомца
