@@ -2,40 +2,37 @@ package Trefilova.PetStore.PetController;
 
 import Trefilova.PetStore.PetSteps.PetModels.*;
 
+import Trefilova.PetStore.Utils.PetBaseURI;
 import com.jayway.restassured.http.ContentType;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static com.jayway.restassured.RestAssured.given;
 import static java.util.stream.Collectors.toList;
-import static org.apache.commons.lang3.ArrayUtils.toArray;
 
 @Slf4j
 public class PetController {
 
     public static void addNewPet(Pet pet) {
         Pet response = given()
-                .header("accept", "application/json")
+                .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
                 .body(pet)
-                .post("https://petstore.swagger.io/v2/pet")
+                .post(PetBaseURI.setBaseURI())
                 .then()
                 .statusCode(200)
                 .extract()
                 .as(Pet.class);
-        //log.info(response.toString());
-        //return pet.id;
     }
 
     public static void updatePet(Pet pet){
         given()
-                .header("accept", "application/json")
+                .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
                 .body(pet)
-                .put("https://petstore.swagger.io/v2/pet")
+                .put(PetBaseURI.setBaseURI())
                 .then()
                 .statusCode(200)
                 .extract()
@@ -46,51 +43,59 @@ public class PetController {
         given()
                 .contentType(ContentType.JSON)
                 .when()
-                .delete("https://petstore.swagger.io/v2/pet/" + id)
+                .delete(PetBaseURI.setBaseURI() + id)
                 .then()
                 .statusCode(200);
         System.out.println("Pet is deleted");
     }
 
     public static void findPetById(long id) {
-            Pet response = given()
-                    .contentType(ContentType.JSON).
-                    when().
-                    get("https://petstore.swagger.io/v2/pet/" + id).
-                    then().
-                    statusCode(200).
-                    extract().
-                    as(Pet.class);
+        Pet response = given()
+                .contentType(ContentType.JSON)
+                .when()
+                .get(PetBaseURI.setBaseURI() + id)
+                .then()
+                .statusCode(200)
+                .extract()
+                .as(Pet.class);
     }
 
     public static void findPetById(long id, Integer statusCode) {
         given()
-                .contentType(ContentType.JSON).
-                        when().
-                        get("https://petstore.swagger.io/v2/pet/" + id).
-                        then().
-                        statusCode(statusCode);
-        //log.info(response.toString());
+                .contentType(ContentType.JSON)
+                .when()
+                .get(PetBaseURI.setBaseURI() + id)
+                .then()
+                .statusCode(statusCode);
         System.out.println("Pet is not found");
+    }
+
+    public static boolean isPetExists(long id) {
+        given()
+                .contentType(ContentType.JSON)
+                .when()
+                .get(PetBaseURI.setBaseURI() + id)
+                .then()
+                .statusCode(200);
+        //System.out.println("Pet with ID" + id + " exists.");
+        return true;
     }
 
     public static List<Pet> findPetByStatus(String status) {
         List<Pet> pets =
-                Arrays.stream(given().
-                        queryParam("status", status)
+                Arrays.stream(given()
+                        .queryParam("status", status)
                         .contentType(ContentType.JSON)
                         .accept(ContentType.JSON)
                         .when()
-                        .get("https://petstore.swagger.io/v2/pet/findByStatus")
+                        .get(PetBaseURI.setBaseURI() + "findByStatus")
                         .then()
                         .statusCode(200)
                         .extract()
                         .body()
-                        //                asString();
-                        //        log.info(response);
                         .as(Pet[].class)).collect(toList());
+
+        //pets.forEach(pet -> log.info("pet: " + pet.status));
         return pets;
-//        List<Pet> petss = Arrays.stream(pets)
-        //log.info(response.toString());
     }
 }
