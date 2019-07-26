@@ -1,9 +1,9 @@
-package Nakhanov.REST;
+package Nakhanov.REST.PetDTO;
 
 import lombok.Setter;
 
 @Setter
 public class Tags {
-    public Integer id;
+    public Long id;
     public String name;
 }

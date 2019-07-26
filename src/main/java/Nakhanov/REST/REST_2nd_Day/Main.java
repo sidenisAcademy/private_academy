@@ -1,4 +1,4 @@
-package Nakhanov.REST.Rest_2nd_day;
+package Nakhanov.REST.REST_2nd_Day;
 
 import com.jayway.restassured.response.Header;
 

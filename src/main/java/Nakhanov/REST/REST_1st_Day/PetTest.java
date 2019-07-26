@@ -1,5 +1,8 @@
-package Nakhanov.REST;
+package Nakhanov.REST.REST_1st_Day;
 
+import Nakhanov.REST.PetDTO.Category;
+import Nakhanov.REST.PetDTO.Pet;
+import Nakhanov.REST.PetDTO.Tags;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -16,7 +19,7 @@ public class PetTest {
     public void checkCreateAndDeletePet(){
         steps.deletePetById(6695);
         steps.getPetID();
-        int id = steps.id;
+        long id = steps.id;
 
         steps.getPetById(id, 200);
 
@@ -30,7 +33,7 @@ public class PetTest {
         category.setId(23);
         category.setName("ololo");
         Tags tags = new Tags();
-        tags.setId(44);
+        tags.setId(44L);
         tags.setName("Bobo");
         List<Tags> tagList = new ArrayList<>();
         tagList.add(tags);
@@ -53,7 +56,7 @@ public class PetTest {
         category.setName("ololo trololo");
         List<String> photoList = new ArrayList<>();
         Tags tags = new Tags();
-        tags.setId(44);
+        tags.setId(44L);
         tags.setName("Bobo");
         List<Tags> tagList = new ArrayList<>();
         tagList.add(tags);

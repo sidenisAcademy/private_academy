@@ -1,15 +1,11 @@
-package Nakhanov.REST.Rest_2nd_day;
+package Nakhanov.REST.REST_2nd_Day;
 
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Header;
-import com.jayway.restassured.response.Response;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static com.jayway.restassured.RestAssured.given;
-import static com.jayway.restassured.RestAssured.responseSpecification;
 
 public class Controllers {
 
