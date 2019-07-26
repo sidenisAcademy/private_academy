@@ -4,6 +4,6 @@ import lombok.Setter;
 
 @Setter
 public class Tags {
-    public long id;
+    public Long id;
     public String name;
 }

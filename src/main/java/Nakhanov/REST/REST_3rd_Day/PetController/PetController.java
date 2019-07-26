@@ -12,7 +12,7 @@ import static com.jayway.restassured.RestAssured.given;
 public class PetController {
 
 
-    public static void addNewPetEndpoint(Pet pet){
+    public static void addNewPetEndpoint(Pet pet) {
         given().spec(Utils.setSpec())
                 .body(pet)
                 .when()
@@ -21,7 +21,7 @@ public class PetController {
                 .statusCode(200);
     }
 
-    public static Pet getPetByIdEndpoint(long id){
+    public static Pet getPetByIdEndpoint(long id) {
         Pet pet = given().spec(Utils.setSpec())
                 .when()
                 .get(baseURI + id)
@@ -32,9 +32,9 @@ public class PetController {
         return pet;
     }
 
-    public static Pet putPetEndpoint(Pet newPet){
+    public static Pet putPetEndpoint(Pet pet1) {
         Pet pet = given().spec(Utils.setSpec())
-                .body(newPet)
+                .body(pet1)
                 .when()
                 .put(baseURI)
                 .then()
@@ -44,7 +44,7 @@ public class PetController {
         return pet;
     }
 
-    public static Pet[] getPetByStatusEndpoint(String status){
+    public static Pet[] getPetByStatusEndpoint(String status) {
         Pet[] pet = given().spec(Utils.setSpec())
                 .queryParam("status", status)
                 .when()
@@ -53,20 +53,18 @@ public class PetController {
                 .statusCode(200)
                 .extract()
                 .as(Pet[].class);
-//        List<Pet> petList = Arrays.stream(pet).collect(Collectors.toList());
-//        List<Pet> petList = Arrays.asList(pet);
         return pet;
     }
 
-    public static Pet[] getPetByStatusEndpoint2(Map<String, String> map){
+    public static Pet[] getPetByStatusEndpoint2(Map<String, String> map) {
         return temp("pet/findByStatus", map).extract().as(Pet[].class);
     }
 
-    public static Pet[] getPetByStatusEndpoint3(Map<String, String> map){
+    public static Pet[] getPetByStatusEndpoint3(Map<String, String> map) {
         return temp("/store/inventory", map).extract().as(Pet[].class);
     }
 
-    public static void updatePetEndpoint (long id, String name, String status){
+    public static void updatePetEndpoint(long id, String name, String status) {
         given().spec(Utils.setSpec())
                 .queryParam("name", name)
                 .queryParam("status", status)
@@ -75,7 +73,8 @@ public class PetController {
                 .then()
                 .statusCode(200);
     }
-    public static void updatePetEndpoint (long id, Map<String, String> map) {
+
+    public static void updatePetEndpoint(long id, Map<String, String> map) {
         given().spec(Utils.setSpec())
                 .queryParams(map)
                 .when()
@@ -84,7 +83,7 @@ public class PetController {
                 .statusCode(200);
     }
 
-    public static void deletePetEndpoint(long id, String apikey){
+    public static void deletePetEndpoint(long id, String apikey) {
         given().spec(Utils.setSpec())
                 .header("api-key", apikey)
                 .when()
@@ -94,7 +93,7 @@ public class PetController {
     }
 
     private static ValidatableResponse temp(String path, Map<String, String> map) {
-       return given().spec(Utils.setSpec())
+        return given().spec(Utils.setSpec())
                 .queryParams(map)
                 .when()
                 .get(path)

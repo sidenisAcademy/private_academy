@@ -33,7 +33,7 @@ public class PetTest {
         category.setId(23);
         category.setName("ololo");
         Tags tags = new Tags();
-        tags.setId(44);
+        tags.setId(44L);
         tags.setName("Bobo");
         List<Tags> tagList = new ArrayList<>();
         tagList.add(tags);
@@ -56,7 +56,7 @@ public class PetTest {
         category.setName("ololo trololo");
         List<String> photoList = new ArrayList<>();
         Tags tags = new Tags();
-        tags.setId(44);
+        tags.setId(44L);
         tags.setName("Bobo");
         List<Tags> tagList = new ArrayList<>();
         tagList.add(tags);
