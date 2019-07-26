@@ -1,4 +1,4 @@
-package Trefilova;
+package Trefilova.RESTpractices;
 
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Header;

@@ -8,24 +8,24 @@
 //
 //
 //
-//    public void createPetTest() {
-//        createPet();
+//    public void addNewPetStep() {
+//        addNewPet();
 //    }
 //
 //    public void requestTestId() {
-//        requestById();
+//        findPetById();
 //    }
 //
-//    public void requestTestStatus() {
-//        requestByStatus();
+//    public void findPetByStatusStep() {
+//        findPetByStatusStep();
 //    }
 //
-//    public void deletePetTest() {
+//    public void deletePetStep() {
 //        deletePet();
 //    }
 //
 //    public void steps() {
-//        createPetTest();
-//        requestById();
+//        addNewPetStep();
+//        findPetById();
 //    }
 //}

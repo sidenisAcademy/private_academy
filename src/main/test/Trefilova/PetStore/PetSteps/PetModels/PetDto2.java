@@ -1,4 +1,4 @@
-package Trefilova;
+package Trefilova.PetStore.PetSteps.PetModels;
 
 import lombok.Builder;
 
@@ -6,7 +6,7 @@ import java.util.List;
 
 @Builder
 public class PetDto2 {
-    public int id;
+    public Integer id;
     public Category category;
     public String name;
     public List<String> photoUrls;
