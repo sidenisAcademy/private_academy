@@ -30,6 +30,17 @@ public class PetController {
         log.info("your pet has been posted: " + pet1.getId());
     }
 
+    public void changePet(PetDto pet){
+        PetDto pet1 = given()
+                .contentType(ContentType.JSON)
+                .when()
+                .body(pet)
+                .put("https://petstore.swagger.io/v2/pet")
+                .then()
+                .statusCode(200)
+                .extract().as(PetDto.class);
+    }
+
     public PetDto request_pet() {
         PetDto resp = given()
                 .queryParam("status", "Sold")
@@ -45,6 +56,20 @@ public class PetController {
 
     }
 
+    public PetDto request_pet(long id) {
+        PetDto resp = given()
+                .queryParam("status", "Sold")
+                .contentType(ContentType.JSON)
+//                .header("accept", "application/xml")
+                .when()
+                .get("https://petstore.swagger.io/v2/pet/" + id) // дергаем id и предаем Step который нам нужен
+                .then()
+                .statusCode(200)
+                .extract().as(PetDto.class);
+        log.info("Here is your pet: " + resp); // контроллер создаст сам dto и засунет туда все возвращенные данные
+        return resp;
+
+    }
 
     public String request_petList() {
         String resp = given()

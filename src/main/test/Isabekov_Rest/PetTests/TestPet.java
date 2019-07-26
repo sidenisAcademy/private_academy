@@ -11,6 +11,7 @@ public class TestPet {
         PetSteps step = new PetSteps(); // создаю экземпляр классов step в этом классе
         step.createPetStep1();  // вызов метода для создания и отправки на Бэк он не статик
         step.getPetStep2();
+        step.updatePetStep();
     }
 
 }
