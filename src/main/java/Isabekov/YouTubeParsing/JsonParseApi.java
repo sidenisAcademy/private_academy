@@ -7,7 +7,7 @@ public class JsonParseApi {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        DTO1 FromJson = objectMapper.readValue(new File("target/YouTube.json"), DTO1.class);
+        MyDto FromJson = objectMapper.readValue(new File("target/YouTube.json"), MyDto.class);
         System.out.println(FromJson.etag);
 
 //        Items FromJson = objectMapper.readValue(new File("target/YouTube.json"), Items.class);
@@ -16,23 +16,23 @@ public class JsonParseApi {
         System.out.println();
 
         Methods method = new Methods();
-        method.calcResults(FromJson);
+//        method.calcResults(FromJson);
 
         System.out.println("\nSingers:");
 
         method.printSingers(FromJson);
 
-        System.out.println("\nSingers and songs:");
-
-        method.printSingerNameAndSong(FromJson);
-
-        System.out.println();
-
-        method.getVideoId(FromJson);
-
-        System.out.println();
-
-        method.compareDates(FromJson);
+//        System.out.println("\nSingers and songs:");
+//
+//        method.printSingerNameAndSong(FromJson);
+//
+//        System.out.println();
+//
+//        method.getVideoId(FromJson);
+//
+//        System.out.println();
+//
+//        method.compareDates(FromJson);
 
     }
 

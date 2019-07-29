@@ -2,7 +2,7 @@ package Isabekov.YouTubeParsing;
 
 import java.util.List;
 
-public class DTO1 {
+public class MyDto {
 
     public String category;
     public String etag;

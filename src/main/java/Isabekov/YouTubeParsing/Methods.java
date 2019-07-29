@@ -7,28 +7,33 @@ import java.util.Date;
 
 public class Methods {
 
-    public void calcResults(DTO1 DTO1) {
+    public void calcResults(MyDto DTO1) {
         System.out.println("Number of coincidences = " + DTO1.pageInfo.totalResults);
     }
 
-    public void printSingers(DTO1 DTO1) {
+    public void printSingers(MyDto DTO1) {
+        System.out.println("Stream ");
+        DTO1.items.stream()
+                .map(item -> item.singer.replaceAll("youtube#", "") + " - " + item.id.song).forEach(System.out::println);
+
+        System.out.println("FOR ");
         for (Items item : DTO1.items)
             System.out.println(item.singer.replaceAll("youtube#", ""));
     }
 
-    public void printSingerNameAndSong(DTO1 DTO1) {
+    public void printSingerNameAndSong(MyDto DTO1) {
         for (Items item : DTO1.items)
             System.out.println(item.singer.replaceAll("youtube#", "") + " - " + item.id.song);
     }
 
-    public void getVideoId(DTO1 DTO1) {
+    public void getVideoId(MyDto DTO1) {
         for (Items item : DTO1.items) {
             if (item.id.song.contains("Bad Guy"))
                 System.out.println("Bad Guy video ID is " + item.id.videoId);
         }
     }
 
-    public void compareDates(DTO1 DTO1) throws Exception  {
+    public void compareDates(MyDto DTO1) throws Exception  {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String substring = DTO1.pageInfo.data.substring(0, 10);
 
