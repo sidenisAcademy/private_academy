@@ -1,4 +1,4 @@
-package REST_testing.Kutsenko;
+package REST_testing.Kutsenko.PetStore.PetSteps.PetModels;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,13 +9,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Pet {
+public class PetDto {
 
-    public Integer id;
-    public Category category;
+    public Long id;
+    public CategoryOrTags category;
     public String name;
     public String[] photoUrls;
-    public Tags[] tags;
+    public CategoryOrTags[] tags;
     public String status;
 
 }
