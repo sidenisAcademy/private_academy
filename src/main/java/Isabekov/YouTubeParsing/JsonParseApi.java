@@ -1,9 +1,6 @@
 package Isabekov.YouTubeParsing;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.File;
-
 public class JsonParseApi {
 
     public static void main (String[] strq) throws Exception {
@@ -38,6 +35,5 @@ public class JsonParseApi {
         method.compareDates(FromJson);
 
     }
-
 
 }
