@@ -17,7 +17,7 @@ public class StringChallenge {
         String testStr1 = new String("Dog");
         String testStr2 = new String("Dog");
 
-        System.out.println(compariton.compareTwoString("Test", "Test"));
+        System.out.println(compariton.compareTwoString("Test23", "Test23"));
         System.out.println(compariton.compareTwoString("New string", "New"));
         System.out.println(compariton.compareTwoString(testStr1, testStr2));
         System.out.println(compariton.compareTwoString("Name", "City"));
