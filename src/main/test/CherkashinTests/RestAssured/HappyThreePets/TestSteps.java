@@ -27,4 +27,11 @@ public class TestSteps {
         fourthTest.changePetParams();
         fourthTest.equalChangedPet(3);
     }
+
+    @Test
+    public void findWithCustomStatus() {
+        Steps fifthTest = new Steps();
+        fifthTest.methodTheCreatorFour();
+        fifthTest.tryToFindPets("available");
+    }
 }

@@ -1,6 +1,6 @@
 package CherkashinTests.RestAssured;
 
 public class Tags {
-    public int id;
+    public long id;
     public String name;
 }

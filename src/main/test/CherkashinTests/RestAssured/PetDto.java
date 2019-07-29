@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @Builder
 public class PetDto {
-    public int id;
+    public long id;
     public Category category;
     public String name;
     public String[] photoUrls;

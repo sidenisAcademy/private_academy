@@ -54,7 +54,7 @@ public class Steps {
         Controller firstPet = new Controller();
         PetDto petDtoOne = first();
         firstPet.creatingPet(petDtoOne);
-        firstPet.gettingPet(petDtoOne.id);
+        firstPet.gettingPetById(petDtoOne.id);
     }
 
     //СОЗДАТЬ И ПОЛУЧИТЬ ПО ВТОРОМУ МЕТОДУ
@@ -62,7 +62,7 @@ public class Steps {
         Controller secondPet = new Controller();
         PetDto petDtoTwo = second();
         secondPet.creatingPet(petDtoTwo);
-        secondPet.gettingPet(petDtoTwo.id);
+        secondPet.gettingPetById(petDtoTwo.id);
     }
 
     //СОЗАТЬ И ПОЛУЧИТЬ ПО ТРЕТЬЕМУ МЕТОДУ
@@ -70,7 +70,7 @@ public class Steps {
         Controller thirdPet = new Controller();
         PetDto petDtoThree = third();
         thirdPet.creatingPet(petDtoThree);
-        return thirdPet.gettingPet(petDtoThree.id);
+        return thirdPet.gettingPetById(petDtoThree.id);
     }
 
     //ИЗМЕНИТЬ ПАРАМЕТРЫ ПЕТА И ВЫЗВАТЬ ЕГО
@@ -89,7 +89,7 @@ public class Steps {
     //ПРОВЕРИТЬ ВСЕ ПОЛЯ НОВОГО ПЕТА
     public void equalChangedPet(Integer id) {
         Controller thirdPet = new Controller();
-        PetDto pet = thirdPet.gettingPet(id);
+        PetDto pet = thirdPet.gettingPetById(id);
         assertEquals(pet.id, 3);
         assertEquals(pet.category.id, 999);
         assertEquals(pet.category.name, "new");
@@ -97,6 +97,46 @@ public class Steps {
         assertNull(pet.photoUrls);
         assertNull(pet.tags);
         assertEquals(pet.status, "spit");
+    }
+
+    //СОЗДАНИЕ ПЕТА СО СТАТУСОМ AVAILABLE
+    private Category addNewCat() {
+        return new Category(1, "мыши");
+    }
+
+    private PetDto fourth() {
+
+        PetDto petDtoFourth = PetDto
+                .builder()
+                .id(4)
+                .category(addNewCat())
+                .name("мыш4")
+                .photoUrls(null)
+                .tags(null)
+                .status("available")
+                .build();
+        return petDtoFourth;
+    }
+
+    public List<PetDto> methodTheCreatorFour() {
+        Controller fourthPet = new Controller();
+        PetDto petDtoFourth = fourth();
+        fourthPet.creatingPet(petDtoFourth);
+        return fourthPet.gettingPetsByStatus(petDtoFourth.status);
+    }
+    //ПРОВЕРКА, ЧТО ПЕТ С МОИМ СТАТУСОМ ПРИСУТСТВУЕТ
+
+    public void tryToFindPets(String status) {
+        Controller fourthPet = new Controller();
+        List<PetDto> pets = fourthPet.gettingPetsByStatus(status);
+        for (PetDto pet : pets) {
+            if (pet.id == 4) {
+                assertEquals(pet.name, "мыш4");
+                assertEquals(pet.category.name, "мыши");
+                System.out.println("СОЗДАННАЯ МЫШ НАЙДЕНА!");
+                break;
+            }
+        }
     }
 }
 

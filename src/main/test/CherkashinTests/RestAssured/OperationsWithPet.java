@@ -9,7 +9,7 @@ import static com.jayway.restassured.RestAssured.given;
 
 @Slf4j
 public class OperationsWithPet {
-    private Integer PostPet() {
+    private long PostPet() {
 
         String body = "{ \"id\": 667, \"category\": { \"id\": 667, \"name\": \"Ivan\" }, \"name\": \"Pes\", \"photoUrls\": [ \"string\" ], \"tags\": [ { \"id\": 0, \"name\": \"string\" } ], \"status\": \"available\"}";
         PetDto postpet = given()
@@ -26,7 +26,7 @@ public class OperationsWithPet {
         return(postpet.id);
     }
 
-    private void GetPet(Integer id) {
+    private void GetPet(long id) {
         PetDto getpet = given()
                 .contentType(ContentType.JSON)
                 .when()
@@ -40,7 +40,7 @@ public class OperationsWithPet {
 
 
 
-    private void DelPet(Integer id) {
+    private void DelPet(long id) {
         String delpet = given()
                 .contentType(ContentType.JSON)
                 .when()
@@ -54,7 +54,7 @@ public class OperationsWithPet {
 
 
 
-    private void GetDeletedPet(Integer id) {
+    private void GetDeletedPet(long id) {
         String getdelpet = given()
                 .contentType(ContentType.JSON)
                 .when()
@@ -68,7 +68,7 @@ public class OperationsWithPet {
 
     @Test
     public void requesttest() {
-        Integer id = PostPet();
+        long id = PostPet();
         GetPet(id);
         DelPet(id);
         GetDeletedPet(id);

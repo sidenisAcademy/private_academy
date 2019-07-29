@@ -5,6 +5,9 @@ import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Header;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static com.jayway.restassured.RestAssured.given;
 
 @Slf4j
@@ -23,10 +26,10 @@ public class Controller {
                 .statusCode(200)
                 .extract()
                 .as(PetDto.class);
-        log.info("Pet Created: " + post.id);
+        log.info("Pet Created with Id " + post.id);
     }
 
-    public PetDto gettingPet(Integer id) {
+    public PetDto gettingPetById(long id) {
         PetDto get = given()
                 .contentType(ContentType.JSON)
                 .when()
@@ -35,8 +38,22 @@ public class Controller {
                 .statusCode(200)
                 .extract()
                 .as(PetDto.class);
-        log.info("Pet Getted: " + get.id);
+        log.info("Pet Getted by Id " + get.id);
         return get;
+    }
+
+    public List<PetDto> gettingPetsByStatus(String status) {
+        PetDto[] get = given()
+                .queryParam("status", status)
+                .contentType(ContentType.JSON)
+                .when()
+                .get("https://petstore.swagger.io/v2/pet/findByStatus")
+                .then()
+                .statusCode(200)
+                .extract()
+                .as(PetDto[].class);
+        log.info("Pet Getted by Status");
+        return Arrays.asList(get);
     }
 
     public void putChanges(PetDto petDto) {
