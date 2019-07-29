@@ -16,21 +16,23 @@ public class JsonParseApi {
         System.out.println();
 
         Methods method = new Methods();
+        //старое задание
 //        method.calcResults(FromJson);
 
         System.out.println("\nSingers:");
 
         method.printSingers(FromJson);
 
+        //старое задание
 //        System.out.println("\nSingers and songs:");
 //
 //        method.printSingerNameAndSong(FromJson);
 //
 //        System.out.println();
 //
-//        method.getVideoId(FromJson);
-//
-//        System.out.println();
+        method.getVideoId(FromJson);
+
+        System.out.println();
 //
 //        method.compareDates(FromJson);
 
