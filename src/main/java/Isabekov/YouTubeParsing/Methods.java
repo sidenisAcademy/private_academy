@@ -1,13 +1,12 @@
-package Isabekov.Model;
+package Isabekov.YouTubeParsing;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
 
 public class Methods {
-    /*
+
     public void calcResults(DTO1 DTO1) {
         System.out.println("Number of coincidences = " + DTO1.pageInfo.totalResults);
     }
@@ -29,7 +28,7 @@ public class Methods {
         }
     }
 
-    public void compareDates(DTO1 DTO1) throws ParseException {
+    public void compareDates(DTO1 DTO1) throws Exception  {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String substring = DTO1.pageInfo.data.substring(0, 10);
 
@@ -47,6 +46,6 @@ public class Methods {
             System.out.println("Days are equal");
 
     }
-    */
+
 
 }

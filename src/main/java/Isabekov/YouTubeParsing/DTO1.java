@@ -1,4 +1,4 @@
-package Isabekov.Model;
+package Isabekov.YouTubeParsing;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class DTO1 {
 
     @Override
     public String toString() {
-        return "DTO1{" +
+        return "Models.DTO1{" +
                 "category='" + category + '\'' +
                 ", etag='" + etag + '\'' +
                 ", nextPageToken='" + nextPageToken + '\'' +
@@ -22,18 +22,4 @@ public class DTO1 {
                 ", items=" + items +
                 '}';
     }
-
-
-
-//    @Override
-//    public String toString() {
-//        return "Models.DTO1{" +
-//                "category='" + category + '\'' +
-//                ", etag='" + etag + '\'' +
-//                ", nextPageToken='" + nextPageToken + '\'' +
-//                ", regionCode='" + regionCode + '\'' +
-//                ", pageInfo=" + pageInfo +
-//                ", items=" + items +
-//                '}';
-//    }
 }
