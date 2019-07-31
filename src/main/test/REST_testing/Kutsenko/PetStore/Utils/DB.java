@@ -1,9 +1,7 @@
 package REST_testing.Kutsenko.PetStore.Utils;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Properties;
 
 public class DB {
