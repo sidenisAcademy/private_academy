@@ -12,7 +12,7 @@ public class SqlExecution {
         String request = "DELETE FROM public.pet where name = '%s'";
         request = String.format(request, name);
         changeData(request);
-        System.out.println("your pet has been " + request);
+        System.out.println("\n your pet has been " + request);
     }
 
     public static void createPet(String name, boolean status, String type, String gender) {

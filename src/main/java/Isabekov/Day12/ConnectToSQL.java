@@ -10,10 +10,10 @@ public class ConnectToSQL {
 //        Connection conn = DriverManager.getConnection( "jdbc:postgresql://172.16.12.15:5432/postgres", "postgres", "123qwe");
 //завернуть в try - tech - finally для открытия и закрытия сессии
 
-        deletePetByName("Bim");
+        deletePetByName("Sim");
 //  old version      update("INSERT INTO public.pet(NAME, STATUS, type, gender) values('Bim', true, 'dog', 'M')");
-        createPet("Sim",true, "cat","M");
-        CheckMyPet("Sim");
+        createPet("Bim",true, "dog","M");
+        CheckMyPet("Bim");
 
 
         //        SQL commands
