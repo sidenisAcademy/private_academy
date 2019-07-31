@@ -5,8 +5,8 @@ import javax.swing.*;
 import java.util.SortedMap;
 
 public class Car {
-    String color;
-    int numberOfDoors;
+    public String color;
+    public int numberOfDoors;
 
    public static void startEngine() {
 
