@@ -1,0 +1,15 @@
+HTTP: // неплохая статья о HTTP протоколе
+https://www.yuripetrov.ru/edu/python/ch_13_01.html#id33
+
+REST: // статья о REST концепции и ее принципах
+https://www.infoq.com/articles/rest-introduction/
+
+RestAssured documentation:
+http://rest-assured.io/
+
+Retrofit documentation + example:
+https://square.github.io/retrofit/
+https://habr.com/ru/post/428736/
+
+Pet store swagger:
+https://petstore.swagger.io/#/

@@ -1,5 +1,5 @@
 package Isabekov;
-
+/*
 import java.util.*;
 
 public class ArrayList_Isabekov {
@@ -43,3 +43,4 @@ public class ArrayList_Isabekov {
     }
 }
 
+*/
