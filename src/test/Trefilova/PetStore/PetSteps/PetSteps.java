@@ -1,17 +1,14 @@
-package Trefilova.PetStore.PetSteps;
+package PetStore.PetSteps;
 
-import Trefilova.PetStore.PetSteps.PetModels.*;
-import org.junit.Assert;
+import Trefilova.PetStore.PetSteps.PetModels.Category;
+import Trefilova.PetStore.PetSteps.PetModels.Pet;
+import Trefilova.PetStore.PetSteps.PetModels.Tags;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static Trefilova.PetStore.PetController.PetController.*;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 public class PetSteps {
 

@@ -7,6 +7,22 @@
     <groupId>sidenisAcademy</groupId>
     <artifactId>sidenisAcademy</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <profiles>
+        <profile>
+            <id>All</id>
+            <properties>
+                <testcase.group>Trefilova.All</testcase.group>
+            </properties>
+        </profile>
+        <profile>
+            <id>Smoke</id>
+            <properties>
+                <testcase.group>Trefilova.Smoke</testcase.group>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -15,7 +31,16 @@
                 <configuration>
                     <source>8</source>
                     <target>8</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <groups>${testcase.group}</groups>
+                </configuration>
+                <version>2.22.2</version>
             </plugin>
         </plugins>
     </build>

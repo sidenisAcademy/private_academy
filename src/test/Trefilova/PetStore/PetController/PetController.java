@@ -1,4 +1,4 @@
-package Trefilova.PetStore.PetController;
+package PetStore.PetController;
 
 import Trefilova.PetStore.PetSteps.PetModels.*;
 
