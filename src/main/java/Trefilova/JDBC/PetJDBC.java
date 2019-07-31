@@ -9,7 +9,6 @@ import static Trefilova.JDBC.ExecuteQuery.other;
 import static Trefilova.JDBC.ExecuteQuery.selectPets;
 import static Trefilova.JDBC.PropertiesList.dbUser;
 import static Trefilova.JDBC.Property.createProperty;
-import static Trefilova.JDBC.Property.getPropertyValue;
 import static Trefilova.JDBC.Property.readProperty;
 import static Trefilova.JDBC.Queries.*;
 
