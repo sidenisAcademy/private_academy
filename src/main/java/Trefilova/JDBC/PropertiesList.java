@@ -40,7 +40,7 @@ public class PropertiesList {
     private static String getPropertyValue(String name) {
         InputStream input = null;
         try {
-            input = new FileInputStream("C:/Examples/private_academy/src/main/java/Trefilova/recources/config.properties");
+            input = new FileInputStream("resources/config.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
