@@ -1,5 +1,3 @@
-package REST_testing.Isabekov_Headers_Day7;
-
 //Содать нового пета 3 разными способами и отправить
 //на сервер, проверить что пет сохранился
 //
@@ -8,21 +6,17 @@ package REST_testing.Isabekov_Headers_Day7;
 //Создать через @AllArgsConstructor
 //3)  Сгенерировать PetDto через билдер ( PetDto.builder(). [поля] .build(); )
 
-import Isabekov.DTO.DTO1;
+import Isabekov.All;
 import Isabekov.Day6.Category;
 import Isabekov.Day6.PetDto;
 import com.jayway.restassured.http.ContentType;
-import jdk.net.SocketFlow;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import static com.jayway.restassured.RestAssured.given;
 
-@Slf4j   //Нотация для логгирования
-// первый вариант
 
 
-public class MyPet {
+public class TestMyPet {
 
     public void addPetStep() {
 
@@ -60,10 +54,12 @@ public class MyPet {
                 .statusCode(200)
                 .extract()
                 .asString();
-        log.info("Response from https://petstore.swagger.io/v2/pet/144: " + resp);
+       // log.info("Response from https://petstore.swagger.io/v2/pet/144: " + resp);
     }
 
+
     @Test //аннотация
+ //   @Category(All.class)
     public void requestTest() {
 //        method();
 //        register();
