@@ -26,7 +26,7 @@ public class Constants {
             // get the property value and print it out
             System.out.print(prop.getProperty("db.url"));
             System.out.print(prop.getProperty("db.user"));
-            System.out.print(prop.getProperty("dgdrd"));
+            System.out.print(prop.getProperty("db.password"));
             return prop.getProperty(key);
 
         } catch (Exception e) {

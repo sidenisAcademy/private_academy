@@ -2,8 +2,7 @@ package Isabekov.Day12;
 
 import java.sql.*;
 
-import static Isabekov.Day12.SqlExecution.Checking;
-import static Isabekov.Day12.SqlExecution.update;
+import static Isabekov.Day12.SqlExecution.*;
 
 
 public class ConnectToSQL {
@@ -11,11 +10,13 @@ public class ConnectToSQL {
 //        Connection conn = DriverManager.getConnection( "jdbc:postgresql://172.16.12.15:5432/postgres", "postgres", "123qwe");
 //завернуть в try - tech - finally для открытия и закрытия сессии
 
-        update("DELETE FROM public.pet where name = 'Bim'");
-        Checking("SELECT * FROM public.pet");
-        update("INSERT INTO public.pet(NAME, STATUS, type, gender) values('Bim', true, 'dog', 'M')");
-        Checking("SELECT * FROM public.pet");
+        deletePetByName("Bim");
+//  old version      update("INSERT INTO public.pet(NAME, STATUS, type, gender) values('Bim', true, 'dog', 'M')");
+        createPet("Sim",true, "cat","M");
+        CheckMyPet("Sim");
 
+
+        //        SQL commands
 
 //        String SQL_DELETE = "DELETE * FROM public.pet (NAME, STATUS, type, gender) values('Bim', true, 'dog', 'M')";
 //        Statement statement2 = conn.createStatement();
