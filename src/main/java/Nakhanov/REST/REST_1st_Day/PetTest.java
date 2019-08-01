@@ -70,7 +70,7 @@ public class PetTest {
     @Test
     public void createPetByUsingBuilderTest(){
         Pet pet = Pet.builder()
-                .id(3335)
+                .id(3345)
                 .name("Sobaka sutulaya")
                 .status("available")
                 .build();
