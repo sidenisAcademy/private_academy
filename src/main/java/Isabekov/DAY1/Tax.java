@@ -7,4 +7,5 @@ public class Tax {
     public double calcTax () {
         return grossIncome * 0.13;
     }
+
 }

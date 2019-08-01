@@ -13,7 +13,6 @@ public class TestCar {
         car1.numberOfDoors = 4;
         car2.numberOfDoors = 2;
 
-
         System.out.println("the cars have been painted");
         System.out.println("the colour of first car is " + car1.color);
         System.out.println("the colour of second car is " + car2.color);
