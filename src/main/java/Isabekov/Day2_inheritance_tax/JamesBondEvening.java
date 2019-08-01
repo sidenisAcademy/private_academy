@@ -22,7 +22,10 @@ public class JamesBondEvening {
                     stopEngline();
                     System.out.println("sorry");
                 }
-                bmw.surface();
+//                bmw.surface();
+        System.out.println("James Bond's car is on the surface " + bmw.currentSubmergeDepth );
+//        System.out.println("James Bond's car is on depth " + bmw.);
+//                bmw.submerge();
 
 
     }

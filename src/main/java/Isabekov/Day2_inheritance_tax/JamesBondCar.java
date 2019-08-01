@@ -9,10 +9,12 @@ class JamesBondCar extends Car {
     int currentSubmergeDepth;
 
     void submerge() {
-        currentSubmergeDepth = 50;
+
+        currentSubmergeDepth = 0;
     }
 
     void surface() {
-        currentSubmergeDepth = 0;
+
+        currentSubmergeDepth = 50;
     }
 }
