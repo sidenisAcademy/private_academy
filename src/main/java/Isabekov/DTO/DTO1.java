@@ -1,5 +1,8 @@
 package Isabekov.DTO;
 
+import lombok.Setter;
+
+@Setter
 public class DTO1 {
     public String category;
     public String etag;

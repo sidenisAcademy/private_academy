@@ -4,7 +4,7 @@ public class MyTestTax {
     public static void main(String[] args) {
         MyTax myTax = new MyTax();
         double myGrossIncome = 1000;;
-        String myCity = "Tomsk";;
+        String myCity = "Tomsk";
         myTax.myGrossIncome = 1000;
         myTax.myCity = "Tomsk";
         double myTaxesInRus = myTax.myCalcTax();
