@@ -1,17 +1,14 @@
-package Trefilova.PetStore.PetSteps;
+package PetStore.PetSteps;
 
-import Trefilova.PetStore.PetSteps.PetModels.*;
-import org.junit.Assert;
+import Trefilova.PetStore.PetSteps.PetModels.Category;
+import Trefilova.PetStore.PetSteps.PetModels.Pet;
+import Trefilova.PetStore.PetSteps.PetModels.Tags;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static Trefilova.PetStore.PetController.PetController.*;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 public class PetSteps {
 
@@ -50,7 +47,7 @@ public class PetSteps {
         } else {
             addNewPet(pet);
         }
-        System.out.println("New pet is created\nID: " + pet.id + ", Name: " + pet.name + ", Categories: " + pet.category.name + ", Status: " + pet.status);
+        System.out.println("New pet is created\nID: " + pet.id + ", Name: " + pet.name + ", Category: " + pet.category.name + ", Status: " + pet.status);
     }
 
     public static void updatePetStep() {
@@ -64,7 +61,7 @@ public class PetSteps {
 
     public static void findPetByIdStepStatus200() {
         findPetById(pet.id);
-        System.out.println("Found pet\nID: " + pet.id + ", Categories: " + pet.category.name + ", Name: " + pet.name + ", Photo URLs: " + pet.photoUrls + ", Tags: " + tagsList.get(1).id + " " + tagsList.get(1).name +  ", Status: " + pet.status);
+        System.out.println("Found pet\nID: " + pet.id + ", Category: " + pet.category.name + ", Name: " + pet.name + ", Photo URLs: " + pet.photoUrls + ", Tags: " + tagsList.get(1).id + " " + tagsList.get(1).name +  ", Status: " + pet.status);
     }
 
     public static void findPetByIdStepStatus400() {

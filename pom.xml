@@ -20,6 +20,18 @@
                 <testcase.group>Isabekov.SmokeTests</testcase.group>
             </properties>
         </profile>
+        <profile>
+            <id>All</id>
+            <properties>
+                <testcase.group>Trefilova.All</testcase.group>
+            </properties>
+        </profile>
+        <profile>
+            <id>Smoke</id>
+            <properties>
+                <testcase.group>Trefilova.Smoke</testcase.group>
+            </properties>
+        </profile>
     </profiles>
 
     <build>
@@ -30,22 +42,18 @@
                 <configuration>
                     <source>8</source>
                     <target>8</target>
-
-                    <encoding>UTF-8</encoding>
-
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
                 <configuration>
-                    <encoding>UTF-8</encoding>
-                   <groups>${testcase.group}</groups>
+                    <groups>${testcase.group}</groups>
                 </configuration>
+                <version>2.22.2</version>
             </plugin>
         </plugins>
-            </build>
+    </build>
 
     <dependencies>
         <dependency>

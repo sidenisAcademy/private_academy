@@ -1,11 +1,9 @@
-package Trefilova;
+package Timemaster;
 
-import com.jayway.restassured.config.RestAssuredConfig;
-import com.jayway.restassured.config.SSLConfig;
 import com.jayway.restassured.http.ContentType;
-import com.jayway.restassured.response.Response;
 import lombok.extern.slf4j.Slf4j;
 
+import static Trefilova.JDBC.PropertiesList.*;
 import static com.jayway.restassured.RestAssured.given;
 
 @Slf4j
@@ -16,10 +14,10 @@ public class FetchPractice {
                 .relaxedHTTPSValidation()
                 .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
-                .cookie("csrftokenn", "TX8Tzc9D7kXvzJOK8qbhXyGWwNQLSw5mGo1WXclX2oZYNp8fNielb7PjvqEUMApp")
-                .cookie("sessionid", "2bm52x39rccrvzbyf9lj2cmiwieqhvuo")
+                .cookie(tokenName, tokenName)
+                .cookie(sessionName, sessionValue)
                 .when()
-                .get("https://timemaster-dev2.sidenis.local/api/whoami/")
+                .get(tmUrl)
                 .then()
                 .extract()
                 .asString();

@@ -37,16 +37,16 @@ public class TestJSONParserWP {
         System.out.println("\nPrint 'meta' if 'status' true:");
         for (WordPress wordPress : wordPressList) {
             if (wordPress.status) {
-                System.out.println("Meta:");
-                for (String item : wordPress.meta) {
-                    System.out.println(item);
-                }
-                System.out.println();
-            } else {
-                System.out.println("Tags:");
-                for (Integer item : wordPress.tags) {
-                    System.out.println(item);
-                }
+                    System.out.println("Meta:");
+                    for (String item : wordPress.meta) {
+                        System.out.println(item);
+                    }
+                    System.out.println();
+                } else {
+                    System.out.println("Tags:");
+                    for (Integer item : wordPress.tags) {
+                        System.out.println(item);
+                    }
                 System.out.println();
             }
         }

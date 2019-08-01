@@ -1,4 +1,4 @@
-package Trefilova.PetStore.Utils;
+package PetStore.Utils;
 
 import com.jayway.restassured.RestAssured;
 

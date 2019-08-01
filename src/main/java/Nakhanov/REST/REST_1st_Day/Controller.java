@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import static com.jayway.restassured.RestAssured.baseURI;
 import static com.jayway.restassured.RestAssured.given;
-
+import static Nakhanov.Constant.*;
 @Slf4j
 public class Controller {
 
@@ -15,7 +15,7 @@ public class Controller {
         String resp = given()
                 .contentType(ContentType.JSON)
                 .when()
-                .get("https://petstore.swagger.io/v2/pet/" + id)
+                .get(petStoreBaseUrl + id)
                 .then()
                 .statusCode(code)
                 .extract()
@@ -28,12 +28,12 @@ public class Controller {
                 " \"name\": \"Kitty\", \"photoUrls\": [ \"string\" ], \"tags\": [ { \"id\": 0, " +
                 "\"name\": \"string\" } ], \"status\": \"sold\"}";
 
-        RestAssured.baseURI = "https://petstore.swagger.io/v2/pet";
+//        RestAssured.baseURI = "https://petstore.swagger.io/v2/pet";
         Pet pet = given().urlEncodingEnabled(true)
                 .body(str)
                 .contentType(ContentType.JSON)
                 .header("Accept", "application/json")
-                .post(baseURI)
+                .post(petStoreBaseUrl)
                 .then()
                 .statusCode(200)
                 .extract()
@@ -55,7 +55,7 @@ public class Controller {
                 .queryParam("status", "sold")
                 .contentType(ContentType.JSON)
                 .when()
-                .get("https://petstore.swagger.io/v2/pet/findByStatus")
+                .get(petStoreBaseUrl + "findByStatus")
                 .then()
                 .statusCode(200)
                 .extract()
@@ -67,7 +67,7 @@ public class Controller {
         Pet pet = given()
                 .contentType(ContentType.JSON)
                 .when()
-                .get("https://petstore.swagger.io/v2/pet/6695")
+                .get(petStoreBaseUrl + "6695")
                 .then()
                 .statusCode(code)
                 .extract()
