@@ -9,9 +9,15 @@
     <version>1.0-SNAPSHOT</version>
     <profiles>
         <profile>
-            <id>Smoke</id>
+            <id>AllTests</id>
             <properties>
                 <testcase.group>Isabekov.All</testcase.group>
+            </properties>
+        </profile>
+        <profile>
+            <id>Smoke</id>
+            <properties>
+                <testcase.group>Isabekov.SmokeTests</testcase.group>
             </properties>
         </profile>
     </profiles>

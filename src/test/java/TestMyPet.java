@@ -7,10 +7,13 @@
 //3)  Сгенерировать PetDto через билдер ( PetDto.builder(). [поля] .build(); )
 
 import Isabekov.All;
-import Isabekov.Day6.Category;
+import Isabekov.SmokeTests;
+import Isabekov.Day6.Categories;
 import Isabekov.Day6.PetDto;
 import com.jayway.restassured.http.ContentType;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
 
 import static com.jayway.restassured.RestAssured.given;
 
@@ -20,7 +23,7 @@ public class TestMyPet {
 
     public void addPetStep() {
 
-        Category cat = new Category();
+        Categories cat = new Categories();
         cat.id = 7;
         cat.name = "Pushok";
 
@@ -29,7 +32,7 @@ public class TestMyPet {
         String[] str = new String[1];
         str[0] = "123";
 
-        Category[] tags = new Category[2];
+        Categories[] tags = new Categories[2];
         tags[0] = cat;
 
         PetDto petDto = new PetDto();
@@ -59,10 +62,19 @@ public class TestMyPet {
 
 
     @Test //аннотация
- //   @Category(All.class)
+    @Category(All.class)
     public void requestTest() {
 //        method();
 //        register();
+//        Login();
+        addPetStep();
+    }
+
+    @Test //аннотация
+    @Category(SmokeTests.class)
+    public void requestTest2() {
+//        method();
+       // register();
 //        Login();
         addPetStep();
     }
