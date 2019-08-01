@@ -1,5 +1,3 @@
-package REST_testing.Isabekov_Headers_Day7;
-
 //Содать нового пета 3 разными способами и отправить
 //на сервер, проверить что пет сохранился
 //
@@ -8,25 +6,24 @@ package REST_testing.Isabekov_Headers_Day7;
 //Создать через @AllArgsConstructor
 //3)  Сгенерировать PetDto через билдер ( PetDto.builder(). [поля] .build(); )
 
-import Isabekov.DTO.DTO1;
-import Isabekov.Day6.Category;
+import Isabekov.All;
+import Isabekov.SmokeTests;
+import Isabekov.Day6.Categories;
 import Isabekov.Day6.PetDto;
 import com.jayway.restassured.http.ContentType;
-import jdk.net.SocketFlow;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
 
 import static com.jayway.restassured.RestAssured.given;
 
-@Slf4j   //Нотация для логгирования
-// первый вариант
 
 
-public class MyPet {
+public class TestMyPet {
 
     public void addPetStep() {
 
-        Category cat = new Category();
+        Categories cat = new Categories();
         cat.id = 7;
         cat.name = "Pushok";
 
@@ -35,7 +32,7 @@ public class MyPet {
         String[] str = new String[1];
         str[0] = "123";
 
-        Category[] tags = new Category[2];
+        Categories[] tags = new Categories[2];
         tags[0] = cat;
 
         PetDto petDto = new PetDto();
@@ -60,13 +57,24 @@ public class MyPet {
                 .statusCode(200)
                 .extract()
                 .asString();
-        log.info("Response from https://petstore.swagger.io/v2/pet/144: " + resp);
+       // log.info("Response from https://petstore.swagger.io/v2/pet/144: " + resp);
     }
 
+
     @Test //аннотация
+    @Category(All.class)
     public void requestTest() {
 //        method();
 //        register();
+//        Login();
+        addPetStep();
+    }
+
+    @Test //аннотация
+    @Category(SmokeTests.class)
+    public void requestTest2() {
+//        method();
+       // register();
 //        Login();
         addPetStep();
     }

@@ -1,16 +1,13 @@
-package Isabekov.Model;
-
+package Isabekov.YouTubeParsing;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.File;
-
 public class JsonParseApi {
-/*
+
     public static void main (String[] strq) throws Exception {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        DTO1 FromJson = objectMapper.readValue(new File("target/YouTube.json"), DTO1.class);
+        MyDto FromJson = objectMapper.readValue(new File("target/YouTube.json"), MyDto.class);
         System.out.println(FromJson.etag);
 
 //        Items FromJson = objectMapper.readValue(new File("target/YouTube.json"), Items.class);
@@ -19,25 +16,26 @@ public class JsonParseApi {
         System.out.println();
 
         Methods method = new Methods();
-        method.calcResults(DTO1);
+        //старое задание
+//        method.calcResults(FromJson);
 
         System.out.println("\nSingers:");
 
-        method.printSingers(DTO1);
+        method.printSingers(FromJson);
 
-        System.out.println("\nSingers and songs:");
-
-        method.printSingerNameAndSong(DTO1);
+        //старое задание
+//        System.out.println("\nSingers and songs:");
+//
+//        method.printSingerNameAndSong(FromJson);
+//
+//        System.out.println();
+//
+        method.getVideoId(FromJson);
 
         System.out.println();
-
-        method.getVideoId(DTO1);
-
-        System.out.println();
-
-        method.compareDates(DTO1);
+//
+//        method.compareDates(FromJson);
 
     }
 
- */
 }

@@ -1,6 +1,5 @@
 package Isabekov.WordPress;
 
-import Isabekov.Model.DTO1;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;

@@ -1,4 +1,4 @@
-package Isabekov.Model;
+package Isabekov.YouTubeParsing;
 
 public class Items {
     public String kind;

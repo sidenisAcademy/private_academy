@@ -10,7 +10,7 @@
 //
 //        Pet pet1 = new Pet();
 //
-//        Category category = new Category();
+//        Categories category = new Categories();
 //        category.id = 1;
 //        category.name = "Cat";
 //

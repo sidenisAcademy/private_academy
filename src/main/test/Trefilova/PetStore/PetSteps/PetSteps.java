@@ -50,7 +50,7 @@ public class PetSteps {
         } else {
             addNewPet(pet);
         }
-        System.out.println("New pet is created\nID: " + pet.id + ", Name: " + pet.name + ", Category: " + pet.category.name + ", Status: " + pet.status);
+        System.out.println("New pet is created\nID: " + pet.id + ", Name: " + pet.name + ", Categories: " + pet.category.name + ", Status: " + pet.status);
     }
 
     public static void updatePetStep() {
@@ -64,7 +64,7 @@ public class PetSteps {
 
     public static void findPetByIdStepStatus200() {
         findPetById(pet.id);
-        System.out.println("Found pet\nID: " + pet.id + ", Category: " + pet.category.name + ", Name: " + pet.name + ", Photo URLs: " + pet.photoUrls + ", Tags: " + tagsList.get(1).id + " " + tagsList.get(1).name +  ", Status: " + pet.status);
+        System.out.println("Found pet\nID: " + pet.id + ", Categories: " + pet.category.name + ", Name: " + pet.name + ", Photo URLs: " + pet.photoUrls + ", Tags: " + tagsList.get(1).id + " " + tagsList.get(1).name +  ", Status: " + pet.status);
     }
 
     public static void findPetByIdStepStatus400() {

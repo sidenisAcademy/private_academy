@@ -1,4 +1,4 @@
-package Isabekov.Model;
+package Isabekov.YouTubeParsing;
 
 public class PageInfo {
 
@@ -38,9 +38,6 @@ public class PageInfo {
                 ", data='" + data + '\'' +
                 '}';
     }
-
-
-
 
 }
 
