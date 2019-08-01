@@ -7,6 +7,7 @@ import java.util.SortedMap;
 public class Car {
     public String color;
     public int numberOfDoors;
+    int fullnessOfTank;
 
    public static void startEngine() {
 

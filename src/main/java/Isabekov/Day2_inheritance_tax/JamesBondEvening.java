@@ -13,7 +13,8 @@ public class JamesBondEvening {
         bmw.numberOfDoors = 2;
         bmw.filledWithGasoline = false;
 
-                if (bmw.filledWithGasoline = true){
+
+                if (bmw.filledWithGasoline == true &&){
                     startEngine();
                     System.out.println(bmw.display);
                     bmw.submerge();
