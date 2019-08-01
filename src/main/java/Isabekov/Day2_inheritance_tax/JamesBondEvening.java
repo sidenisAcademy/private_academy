@@ -7,14 +7,14 @@ public class JamesBondEvening {
     public static void main(String[] arg) {
 
         JamesBondCar bmw = new JamesBondCar();
-        bmw.display = "JamesBond Forewer";
-
+        bmw.display = "JamesBond is ready to go";
+        bmw.fullnessOfTank = 20;
         bmw.color = "black";                  // почему не наследуются переменные родительского класса
         bmw.numberOfDoors = 2;
-        bmw.filledWithGasoline = false;
+        bmw.JamesIstired = true;
 
 
-                if (bmw.filledWithGasoline == true &&){
+                if (bmw.JamesIstired == true && bmw.fullnessOfTank >= 15){
                     startEngine();
                     System.out.println(bmw.display);
                     bmw.submerge();

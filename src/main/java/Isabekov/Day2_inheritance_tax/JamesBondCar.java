@@ -4,7 +4,7 @@ import Isabekov.DAY1.Car;
 
 class JamesBondCar extends Car {
     int turbines;
-    boolean filledWithGasoline;
+    boolean JamesIstired;
     String display;
     int currentSubmergeDepth;
 
