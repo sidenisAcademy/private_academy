@@ -80,8 +80,8 @@ public class PetSteps {
     }
 
     public static void checkPet() {
-        assertEquals(java.util.Optional.ofNullable(pet.id), 15);
-        assertEquals(pet.name, "Vasiliy");
+        assertEquals(pet.id, 100);
+        assertEquals(pet.name, "Chelsea");
         assertEquals(pet.category.name, "Dog");
         assertEquals(pet.status, "sold");
     }

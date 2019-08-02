@@ -21,17 +21,17 @@ public class Main {
 
         method.printSingers(youTubeResponse);
 
-        System.out.println("\nSingers and songs:");
-
+//        System.out.println("\nSingers and songs:");
+//
         method.printSingerNameAndSong(youTubeResponse);
-
-        System.out.println();
-
-        method.getVideoId(youTubeResponse);
-
-        System.out.println();
-
-        method.compareDates(youTubeResponse);
+//
+//        System.out.println();
+//
+        System.out.println(method.getVideoId(youTubeResponse));
+//
+//        System.out.println();
+//
+//        method.compareDates(youTubeResponse);
 
         //SimpleDateFormat sdf = new SimpleDateFormat("2018-09-12");
         //Date date =

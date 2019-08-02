@@ -20,7 +20,7 @@ public class PetController {
                 .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
                 .body(pet)
-                .post(PetBaseURI.setBaseURI())
+                .post("https://petstore.swagger.io/v2/pet")
                 .then()
                 .statusCode(200)
                 .extract()
@@ -32,7 +32,7 @@ public class PetController {
                 .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
                 .body(pet)
-                .put(PetBaseURI.setBaseURI())
+                .put("https://petstore.swagger.io/v2/pet")
                 .then()
                 .statusCode(200)
                 .extract()
@@ -74,7 +74,7 @@ public class PetController {
         given()
                 .contentType(ContentType.JSON)
                 .when()
-                .get(PetBaseURI.setBaseURI() + id)
+                .get("https://petstore.swagger.io/v2/pet/" + id)
                 .then()
                 .statusCode(200);
         //System.out.println("Pet with ID" + id + " exists.");
