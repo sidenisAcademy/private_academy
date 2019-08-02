@@ -1,9 +1,11 @@
 package Kutsenko.TestYoutube;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import java.util.List;
 
+@Getter
+@NoArgsConstructor
 public class Youtube {
 
     public String category;

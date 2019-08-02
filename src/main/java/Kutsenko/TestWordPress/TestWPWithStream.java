@@ -5,8 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class TestJSONParserWP {
+public class TestWPWithStream {
 
     public static List<WordPress> parseJSON(String jsonPath) {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -32,24 +33,18 @@ public class TestJSONParserWP {
 
     }
 
-
     static void printMetaOrTags(List<WordPress> wordPressList) {
         System.out.println("\nPrint 'meta' if 'status' true:");
-        for (WordPress wordPress : wordPressList) {
-            if (wordPress.status) {
-                    System.out.println("Meta:");
-                    for (String item : wordPress.meta) {
-                        System.out.println(item);
-                    }
-                    System.out.println();
-                } else {
-                    System.out.println("Tags:");
-                    for (Integer item : wordPress.tags) {
-                        System.out.println(item);
-                    }
-                System.out.println();
-            }
-        }
+        System.out.println("Meta:");
+        wordPressList.stream()
+                .filter(wordPress -> wordPress.status)
+                .map(wordPress -> wordPress.meta)
+                .forEach(x -> Arrays.stream(x).forEach(System.out::println));
+        System.out.println("Tags:");
+        wordPressList.stream()
+                .filter(wordPress -> !wordPress.status)
+                .map(wordPress -> wordPress.tags)
+                .forEach(x -> Arrays.stream(x).forEach(System.out::println));
     }
 
     public static void main(String[] args) {

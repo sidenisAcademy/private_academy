@@ -1,7 +1,8 @@
+package PetStore.PetTests;
 
 import org.junit.Test;
 
-import static Trefilova.PetStore.PetSteps.PetSteps.*;
+import static PetStore.PetSteps.PetSteps.*;
 
 
 public class PetTests {
