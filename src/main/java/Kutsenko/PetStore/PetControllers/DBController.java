@@ -1,4 +1,4 @@
-package REST_testing.Kutsenko.PetStore.PetControllers;
+package Kutsenko.PetStore.PetControllers;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 
-import static REST_testing.Kutsenko.PetStore.Utils.DB.*;
+import static Kutsenko.PetStore.Utils.DB.*;
 
 public class DBController {
 

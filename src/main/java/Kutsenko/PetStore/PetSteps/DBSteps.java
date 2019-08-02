@@ -1,6 +1,6 @@
-package REST_testing.Kutsenko.PetStore.PetSteps;
+package Kutsenko.PetStore.PetSteps;
 
-import REST_testing.Kutsenko.PetStore.PetControllers.DBController;
+import Kutsenko.PetStore.PetControllers.DBController;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.HashMap;

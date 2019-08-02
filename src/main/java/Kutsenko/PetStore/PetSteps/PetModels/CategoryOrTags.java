@@ -1,4 +1,4 @@
-package REST_testing.Kutsenko.PetStore.PetSteps.PetModels;
+package Kutsenko.PetStore.PetSteps.PetModels;
 
 import lombok.Setter;
 

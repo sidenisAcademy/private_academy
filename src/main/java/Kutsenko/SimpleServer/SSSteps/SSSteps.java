@@ -1,6 +1,6 @@
-package REST_testing.Kutsenko.SimpleServer.SSSteps;
+package Kutsenko.SimpleServer.SSSteps;
 
-import REST_testing.Kutsenko.SimpleServer.SSControllers.SSController;
+import Kutsenko.SimpleServer.SSControllers.SSController;
 
 public class SSSteps {
 

@@ -1,4 +1,4 @@
-package REST_testing.Kutsenko.PetStore.Utils;
+package Kutsenko.PetStore.Utils;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.builder.RequestSpecBuilder;

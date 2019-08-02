@@ -1,4 +1,4 @@
-package REST_testing.Kutsenko.SimpleServer.SSControllers;
+package Kutsenko.SimpleServer.SSControllers;
 
 import com.jayway.restassured.http.ContentType;
 import lombok.extern.slf4j.Slf4j;

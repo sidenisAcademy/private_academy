@@ -1,4 +1,4 @@
-package REST_testing.Kutsenko.PetStore.Utils;
+package Kutsenko.PetStore.Utils;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

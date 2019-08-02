@@ -1,12 +1,16 @@
-package REST_testing.Kutsenko.PetStore.PetTests;
+package Kutsenko;
 
-import REST_testing.Kutsenko.PetStore.PetSteps.PetSteps;
+import Kutsenko.PetStore.PetSteps.PetSteps;
+import Kutsenko.Profiles.AllTests;
+import Kutsenko.Profiles.SmokeTests;
 import org.junit.AfterClass;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 public class PetTest {
 
     @Test
+    @Category(SmokeTests.class)
     public void editPetTest() {
         PetSteps.stepAddPet(604L, 111L, "string", null, null, null);
         PetSteps.stepEditPet(604L, 111L, "New category", null, null, "sold");
@@ -15,6 +19,7 @@ public class PetTest {
     }
 
     @Test
+    @Category(AllTests.class)
     public void checkPetExist() {
 
         PetSteps.stepAddPetWithBuilder(604L, 111L, "string", "doggie", null, "available");
@@ -23,6 +28,7 @@ public class PetTest {
     }
 
     @Test
+    @Category(AllTests.class)
     public void checkPetNotExist() {
 
         PetSteps.stepAddPetWithBuilder(604L, 111L, "string", "doggie", null, "available");
