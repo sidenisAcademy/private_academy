@@ -1,8 +1,8 @@
-package REST_testing.Kutsenko.PetStore.PetSteps;
+package Kutsenko.PetStore.PetSteps;
 
-import REST_testing.Kutsenko.PetStore.PetSteps.PetModels.CategoryOrTags;
-import REST_testing.Kutsenko.PetStore.PetSteps.PetModels.PetDto;
-import REST_testing.Kutsenko.PetStore.PetControllers.PetController;
+import Kutsenko.PetStore.PetSteps.PetModels.CategoryOrTags;
+import Kutsenko.PetStore.PetSteps.PetModels.PetDto;
+import Kutsenko.PetStore.PetControllers.PetController;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;

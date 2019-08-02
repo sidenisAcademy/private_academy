@@ -1,6 +1,6 @@
-package REST_testing.Kutsenko.PetStore.PetSteps;
+package Kutsenko.PetStore.PetSteps;
 
-import REST_testing.Kutsenko.PetStore.PetControllers.UserController;
+import Kutsenko.PetStore.PetControllers.UserController;
 
 public class UserSteps {
 

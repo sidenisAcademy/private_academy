@@ -1,6 +1,6 @@
-package REST_testing.Kutsenko.PetStore.PetTests;
+package Kutsenko.PetStore.PetTests;
 
-import REST_testing.Kutsenko.PetStore.PetSteps.UserSteps;
+import Kutsenko.PetStore.PetSteps.UserSteps;
 import org.junit.Test;
 
 public class UserTest {
