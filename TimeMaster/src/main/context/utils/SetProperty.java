@@ -1,11 +1,11 @@
 package context.utils;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Properties;
 
 public class SetProperty {
+
+    public static final SetProperty INSTANCE = new SetProperty();
 
     public static Properties properties;
 
