@@ -71,14 +71,17 @@ public class PetController {
     }
 
     public static boolean isPetExists(long id) {
-        given()
+        if(given()
                 .contentType(ContentType.JSON)
                 .when()
                 .get(PetBaseURI.setBaseURI() + id)
                 .then()
-                .statusCode(200);
+                .extract()
+                .statusCode() == 200)
+            return true;
+        else
+            return false;
         //System.out.println("Pet with ID" + id + " exists.");
-        return true;
     }
 
     public static List<Pet> findPetByStatus(String status) {

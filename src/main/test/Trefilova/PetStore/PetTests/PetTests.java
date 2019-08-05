@@ -12,6 +12,7 @@ import static com.jayway.restassured.RestAssured.given;
 public class PetTests {
 
     @Test
+
     public void TestPet1() {
         addNewPetStep(100,"Chelsea", 1, "Dog", "sold");
         updatePetStep();
