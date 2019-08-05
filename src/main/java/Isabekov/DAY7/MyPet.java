@@ -1,4 +1,4 @@
-package REST_testing.Isabekov_Headers_Day7;
+package Isabekov.DAY7;
 
 //Содать нового пета 3 разными способами и отправить
 //на сервер, проверить что пет сохранился
@@ -8,11 +8,9 @@ package REST_testing.Isabekov_Headers_Day7;
 //Создать через @AllArgsConstructor
 //3)  Сгенерировать PetDto через билдер ( PetDto.builder(). [поля] .build(); )
 
-import Isabekov.DTO.DTO1;
 import Isabekov.Day6.Category;
 import Isabekov.Day6.PetDto;
 import com.jayway.restassured.http.ContentType;
-import jdk.net.SocketFlow;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 

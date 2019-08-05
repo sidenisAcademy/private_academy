@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static com.jayway.restassured.RestAssured.given;
 
-@Slf4j
+@Slf4j  //только для логов, создает поле в классе
 public class Authorisation {
 
     public void method(){

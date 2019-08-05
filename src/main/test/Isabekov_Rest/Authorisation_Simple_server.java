@@ -1,4 +1,4 @@
-package REST_testing.Isabekov_Headers_Day7;
+package Isabekov_Rest;
 
 import com.jayway.restassured.http.ContentType;
 import lombok.extern.slf4j.Slf4j;
