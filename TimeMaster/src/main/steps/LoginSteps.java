@@ -1,5 +1,6 @@
 package steps;
 
+import com.thoughtworks.gauge.Step;
 import timemaster.loginPage.LoginPage;
 
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -26,6 +27,7 @@ public class LoginSteps {
         assertThat(url()).isEqualTo(properties.getProperty("TM_URI"));
     }
 
+    @Step("Login")
     public void loginWithDefaultCreds() {
         setDefaultUserName();
         submit();

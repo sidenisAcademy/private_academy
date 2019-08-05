@@ -1,5 +1,6 @@
 package timemaster.loginPage;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,11 +14,12 @@ public class LoginPage {
 
     public LoginPage() {
         button_submit = $("input[type = \"submit\"]");
-        input_email = $("input[type = 'email']");
         input_password = $("input[name='passwd']");
     }
 
     public void setEmail(String email){
+        $("input[type = 'email']").waitUntil(Condition.visible, 10000);
+        input_email = $("input[type = 'email']");
         log.info("set email: " + email);
         input_email.setValue(email);
     }

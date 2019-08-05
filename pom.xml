@@ -50,7 +50,7 @@
                     <execution>
                         <phase>test</phase>
                         <configuration>
-                            <specsDir>specs</specsDir>
+                            <specsDir>TimeMaster/specs</specsDir>
                         </configuration>
                         <goals>
                             <goal>execute</goal>
@@ -122,7 +122,11 @@
             <artifactId>selenide</artifactId>
             <version>4.13.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.gauge</groupId>
+            <artifactId>gauge-java</artifactId>
+            <version>0.7.2</version>
+        </dependency>
     </dependencies>
-
 
 </project>
