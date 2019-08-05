@@ -6,7 +6,7 @@ public class TimeTableSteps {
 
     TimeTable page = new TimeTable();
 
-    public void setBreak(String newBreak){
+    public void setBreak(String newBreak) {
         page.setBreak(newBreak);
     }
 

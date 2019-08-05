@@ -34,13 +34,12 @@ public class TimeTableTest {
         loginSteps.setDefaultPassword();
         loginSteps.submit();
         loginSteps.submit();
+        timeTableSteps = new TimeTableSteps();
     }
 
     @Test
     public void setNewBreak() {
-
         timeTableSteps.setBreak("0:45");
-
     }
 
     @After
