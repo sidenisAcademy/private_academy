@@ -112,7 +112,11 @@
             <artifactId>postgresql</artifactId>
             <version>9.1-901-1.jdbc4</version>
         </dependency>
-        <dependency>
+        <dependency
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.14.0</version>
+        </dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>3.4.0</version>
@@ -122,7 +126,5 @@
             <artifactId>selenide</artifactId>
             <version>4.13.0</version>
         </dependency>
-    </dependencies>
-
-
+   </dependencies>
 </project>

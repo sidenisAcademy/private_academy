@@ -5,14 +5,16 @@ import javax.swing.*;
 import java.util.SortedMap;
 
 public class Car {
-    String color;
-    int numberOfDoors;
-    void startEngine() {
+    public String color;
+    public int numberOfDoors;
+    public int fullnessOfTank;
+
+   public static void startEngine() {
 
         System.out.println("Engine Started");
     }
 
-    void stopEngline() {
+  public static void stopEngline() {
 
         int temp = 0;
         System.out.println("Engine stopped");
