@@ -1,6 +1,7 @@
 package Kutsenko.TestWordPress;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class WordPress {
 
@@ -13,4 +14,17 @@ public class WordPress {
     public Integer[] categories;
     public Integer[] tags;
 
+    @Override
+    public String toString() {
+        return "WordPress{" +
+                "id=" + id +
+                ", status=" + status +
+                ", meta=" + Arrays.toString(meta) +
+                ", date='" + date + '\'' +
+                ", date_gmt='" + date_gmt + '\'' +
+                ", guid=" + guid +
+                ", categories=" + Arrays.toString(categories) +
+                ", tags=" + Arrays.toString(tags) +
+                '}';
+    }
 }
