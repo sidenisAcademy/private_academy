@@ -82,6 +82,10 @@ public class Selenium {
         WebElement element5 = driver.findElement(By.xpath("//*[@id=\"sbtc\"]/div/div[2]/div[2]/span")); // ищем элемент для того чтобы начать с ним потом взаиможействовать
  // перетестировать
         element5.click();
+
+
+
+
         WebElement element6 = driver.findElement(By.xpath("//*[@id=\"K71\"]"));
         element6.click();
         WebElement element7 = driver.findElement(By.xpath("//*[@id=\"K72\"]"));
