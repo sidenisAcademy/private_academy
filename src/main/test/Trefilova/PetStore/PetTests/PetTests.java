@@ -1,14 +1,9 @@
-package Trefilova.PetStore.PetTests;
 
-import Trefilova.PetStore.PetSteps.PetSteps;
-import lombok.extern.slf4j.Slf4j;
-import org.junit.Before;
 import org.junit.Test;
 
 import static Trefilova.PetStore.PetSteps.PetSteps.*;
-import static com.jayway.restassured.RestAssured.given;
 
-@Slf4j
+
 public class PetTests {
 
     @Test
@@ -22,9 +17,9 @@ public class PetTests {
 
     @Test
     public void TestPet2() {
-        addNewPetStep(101,"Pharaon", 2, "Cat", "available");
+        addNewPetStep(202,"Pharaon", 2, "Cat", "available");
         findPetByStatusStep("available");
-        checkIfPetExists(101,"Pharaon", "Cat", "available");
+        checkIfPetExists(202,"Pharaon", "Cat", "available");
     }
 
     @Test
