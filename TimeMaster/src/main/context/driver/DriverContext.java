@@ -16,7 +16,7 @@ public class DriverContext {
     public static WebDriver webDriver;
 
     public static void setup() {
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().version("75.0.3770.140").setup();
     }
 
     public static void initializeDriver() {
