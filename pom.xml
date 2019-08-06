@@ -50,7 +50,7 @@
                     <execution>
                         <phase>test</phase>
                         <configuration>
-                            <specsDir>specs</specsDir>
+                            <specsDir>TimeMaster/specs</specsDir>
                         </configuration>
                         <goals>
                             <goal>execute</goal>
@@ -106,6 +106,11 @@
             <artifactId>postgresql</artifactId>
             <version>9.1-901-1.jdbc4</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>4.13.0</version>
         </dependency>
     </dependencies>
 

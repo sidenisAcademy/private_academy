@@ -3,7 +3,7 @@ package Trefilova.JDBC;
 public class PetJDBC {
     public static void main(String[] args) {
         //selectPets(selectAll(5));
-        selectPets(selectAll());
+//        selectPets(selectAll());
         //other(insertValues(666, "Pushok", "Beast", "male", false));
         //other(insertValues(5, "Petr", "Parrot", "male", true));
         //selectPets(selectAll("Petr"));
