@@ -2,19 +2,17 @@ import Trefilova.Smoke;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import static Trefilova.PetStore.PetSteps.PetSteps.*;
-
 
 public class PetTests1 {
 
-    @Test
-    @Category(Smoke.class)
-    public void TestPet1() {
-        addNewPetStep(100,"Chelsea", 1, "Dog", "sold");
-        updatePetStep();
-        findPetByIdStepStatus200();
-        checkPet();
-    }
+//    @Test
+//    @Category(Smoke.class)
+//    public void TestPet1() {
+//        addNewPetStep(100,"Chelsea", 1, "Dog", "sold");
+//        updatePetStep();
+//        findPetByIdStepStatus200();
+//        checkPet();
+//    }
 //
 //    @TestK
 //    public void TestPet2() {
