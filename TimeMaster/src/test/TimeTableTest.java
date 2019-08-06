@@ -19,7 +19,6 @@ public class TimeTableTest {
     LoginSteps loginSteps;
     WebDriver driver;
 
-
     @Before()
     public void preparing() {
         setProperties();
@@ -36,12 +35,10 @@ public class TimeTableTest {
         loginSteps.submit();
         timeTableSteps = new TimeTableSteps();
     }
-
     @Test
     public void setNewBreak() {
         timeTableSteps.setBreak("0:45");
     }
-
     @After
     public void endTest() {
         driver.close();
