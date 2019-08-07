@@ -19,7 +19,7 @@ public class LoginPage {
     }
 
     public void setEmail(String email){
-        input_email.waitUntil(Condition.visible, 10000);
+        input_email.waitUntil(Condition.visible, 10000); // ожидание 10 сек
         log.info("set email: " + email);
         input_email.setValue(email);
     }

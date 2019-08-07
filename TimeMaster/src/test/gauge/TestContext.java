@@ -1,6 +1,7 @@
 package gauge;
 
 import com.codeborne.selenide.WebDriverRunner;
+import com.thoughtworks.gauge.AfterScenario;
 import com.thoughtworks.gauge.BeforeScenario;
 import context.driver.DriverFactory;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +18,7 @@ public class TestContext {
     LogoutSteps logoutSteps;
     WebDriver driver;
 
-@BeforeScenario
+    @BeforeScenario
     public void preparing() {
         setProperties();
         loginSteps = new LoginSteps();
@@ -27,5 +28,10 @@ public class TestContext {
 //        driver.manage().timeouts().pageLoadTimeout(20000, TimeUnit.MILLISECONDS);
         WebDriverRunner.setWebDriver(driver); // пропихиваем драйвер селениду через getWebDriver() можно получить текущий драйвер
         driver.get(properties.getProperty("TM_URI"));
+    }
+
+    @AfterScenario
+    public void endTest() {
+        driver.close();
     }
 }
