@@ -12,13 +12,13 @@
         <profile>
             <id>All</id>
             <properties>
-                <testcase.group>Trefilova.All</testcase.group>
+                <testcase.group>Nakhanov.All</testcase.group>
             </properties>
         </profile>
         <profile>
             <id>Smoke</id>
             <properties>
-                <testcase.group>Trefilova.Smoke</testcase.group>
+                <testcase.group>Nakhanov.Smoke</testcase.group>
             </properties>
         </profile>
     </profiles>
