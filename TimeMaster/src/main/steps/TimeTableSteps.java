@@ -12,4 +12,13 @@ public class TimeTableSteps {
         page.setBreak(newBreak);
     }
 
+    @Step("set a new time for is <newIs>")
+    public void setIsTime(String newIs){
+        page.setIs(newIs);
+    }
+
+    @Step("set a new time for isGuild <newIsGuild>")
+    public void setIsGuildTime(String newIsGuild){
+        page.setIsGuild(newIsGuild);
+    }
 }
