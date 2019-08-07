@@ -3,7 +3,6 @@ import context.driver.DriverFactory;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import steps.LoginSteps;
-import steps.LogoutSteps;
 
 import java.util.concurrent.TimeUnit;
 

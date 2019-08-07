@@ -1,5 +1,8 @@
 package Trefilova.JDBC;
 
+import static Trefilova.JDBC.ExecuteQuery.selectPets;
+import static Trefilova.JDBC.Queries.selectAll;
+
 public class PetJDBC {
     public static void main(String[] args) {
         //selectPets(selectAll(5));
