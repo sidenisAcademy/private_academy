@@ -7,6 +7,7 @@ import static Trefilova.PetStore.PetSteps.PetSteps.*;
 public class PetTests {
 
     @Test
+
     public void TestPet1() {
         addNewPetStep(100,"Chelsea", 1, "Dog", "sold");
         updatePetStep();
