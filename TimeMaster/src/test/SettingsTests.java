@@ -39,7 +39,8 @@ public class SettingsTests {
         loginSteps.loginWithDefaultCreds();
         setSteps.initializePage();
         //setSteps.setPreviousBreakValue();
-        assertThat(url()).isEqualTo("https://timemaster-dev2.sidenis.local/settings");
+        assertThat(url()).isEqualTo("https://timemaster-dev2.sidenis.local/settings");  // проверяем совпадение строк,но лучше не ассертами,  аотдельным методом
+
     }
 
     @Test
