@@ -1,4 +1,4 @@
-Specification Heading
+Set new time for Internal Sidenis and Guild time
 =====================
 Created by Alexander.Gaisenok on 8/7/2019
 
