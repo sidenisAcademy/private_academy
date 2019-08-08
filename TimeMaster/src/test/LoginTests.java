@@ -15,6 +15,7 @@ public class LoginTests {
     LoginSteps loginSteps;
     WebDriver driver;
 
+
     @Before()
     public void preparing() {
         setProperties();
@@ -45,11 +46,10 @@ public class LoginTests {
         loginSteps.checkThatUserOnMainPage();
     }
 
-    @Test
-    public void SomeAnotherTest() {
-        loginSteps.loginWithDefaultCreds();
-        // ... steps
-    }
+//    @Test
+//    public void LogoutTest() {
+//        LogoutSteps.submit();
+//    }
 
     @After
     public void endTest() {

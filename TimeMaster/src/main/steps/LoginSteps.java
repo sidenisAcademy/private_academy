@@ -26,7 +26,7 @@ public class LoginSteps {
     public void checkThatUserOnMainPage() {
         assertThat(url()).isEqualTo(properties.getProperty("TM_URI"));
     }
-    @Step("Login")
+@Step("Login")
     public void loginWithDefaultCreds() {
         setDefaultUserName();
         submit();
@@ -34,4 +34,7 @@ public class LoginSteps {
         submit();
         submit();
     }
+
+
+
 }
