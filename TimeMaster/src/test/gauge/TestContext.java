@@ -20,7 +20,7 @@ public class TestContext {
     WebDriver driver;
 
     @BeforeScenario
-    public void befor(){
+    public void before(){
         setProperties();
         loginSteps = new LoginSteps();
         setup();

@@ -1,10 +1,8 @@
 package timemaster.vacationsPage;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.thoughtworks.gauge.Step;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,15 +19,18 @@ public class VacationsPage {
     SelenideElement employees_list;
     SelenideElement vacations_list;
 
+    SelenideElement row_created_vacation;
+
     //create vacation form
-    SelenideElement input_date_from;
-    SelenideElement input_date_to;
+    public SelenideElement input_date_from;
+    public SelenideElement input_date_to;
     SelenideElement checkbox_unpaid_leave;
-    SelenideElement button_close;
-    SelenideElement button_create;
+    SelenideElement button_close_vacation_form;
+    SelenideElement button_create_vacation_form;
 
     SelenideElement backend_returned_code1;
     SelenideElement backend_returned_code2;
+    SelenideElement button_close_all_backend_errors;
 
     public VacationsPage() {
         input_find = $(byXpath("//input[@id='mat-input-1']"));
@@ -38,14 +39,17 @@ public class VacationsPage {
         employees_list = $(byClassName("users-column__employees-list employees-list"));
         vacations_list = $(byClassName("table-vacations__vacations-column vacations-column"));
 
+        row_created_vacation = $(byXpath("//div[@class=' disapproved border-left']"));
+
         input_date_from = $(byXpath("//input[@formcontrolname='dateFrom']"));
         input_date_to = $(byXpath("//input[@formcontrolname='dateTo']"));
         checkbox_unpaid_leave = $(byClassName("mat-checkbox-inner-container"));
-        button_close = $(byText("CLOSE"));
-        button_create = $(byText("CREATE"));
+        button_close_vacation_form = $(byText("CLOSE"));
+        button_create_vacation_form = $(byText("CREATE"));
 
         backend_returned_code1 = $(byText(" Backend returned code 406 "));
         backend_returned_code2 = $(byText(" Backend returned code undefined "));
+        button_close_all_backend_errors = $(byText("Close all"));
     }
 
     public void click_find(String string) {
@@ -74,6 +78,21 @@ public class VacationsPage {
         input_date_from.setValue(date);
     }
 
+    public void clear_date_from() {
+        input_date_from.click();
+        input_date_from.clear();
+    }
+
+
+    public void clear_date_to() {
+        input_date_to.click();
+        input_date_to.clear();
+    }
+
+    public void get_date_from() {
+        input_date_from.getValue();
+    }
+
     public void set_unpaid_leave() {
         log.info("click on the checkbox \"Unpaid leave\"");
         checkbox_unpaid_leave.click();
@@ -81,16 +100,24 @@ public class VacationsPage {
 
     public void click_close_button() {
         log.info("click on the button \"CLOSE\"");
-        button_close.click();
+        button_close_vacation_form.click();
     }
 
     public void click_create_button() {
         log.info("click on the button \"CREATE\"");
-        button_create.click();
+        button_create_vacation_form.click();
     }
 
-    public void check_backend_returned_codes() {
+    public void check_backend_errors() {
         backend_returned_code1.exists();
         backend_returned_code2.exists();
+    }
+
+    public void close_backend_errors() {
+        button_close_all_backend_errors.click();
+    }
+
+    public void click_on_created_vacation() {
+        row_created_vacation.click();
     }
 }
