@@ -19,6 +19,7 @@ public class SettingsTests {
     LoginSteps loginSteps;
     WebDriver driver;
     SettingsSteps setSteps;
+    String city  = "Krasnoyarsk";
 
     @Before()
     public void preparing() {
@@ -36,7 +37,6 @@ public class SettingsTests {
     public void checkThatUserOnSettingsPage() {
         loginSteps.loginWithDefaultCreds();
         setSteps.initializePage();
-        //setSteps.setPreviousBreakValue();
         assertThat(url()).isEqualTo("https://timemaster-dev2.sidenis.local/settings");
     }
 
@@ -45,7 +45,7 @@ public class SettingsTests {
         loginSteps.loginWithDefaultCreds();
         setSteps.initializePage();
         setSteps.setPreviousBreakValue();
-        assertThat(setSteps.isBreakInputEnabled()).isFalse();
+        setSteps.isBreakInputEnabled();
     }
     @Test
     public void checkUserBreakValueIsSet() {
@@ -53,5 +53,12 @@ public class SettingsTests {
         setSteps.initializePage();
         setSteps.setUserBreakValue();
         assertThat(setSteps.getBreakValue()).isEqualTo("0:30");
+    }
+    @Test
+    public void checkTimezoneIsSet() {
+        loginSteps.loginWithDefaultCreds();
+        setSteps.initializePage();
+        setSteps.selectTimeZone(city);
+        //assertThat(setSteps.getBreakValue()).isEqualTo("0:30");
     }
 }
