@@ -16,16 +16,19 @@ public class VacationsSteps {
 
     @Step("Click create vacation button")
     public void clickCreateVacationButton() {
-        vacationsPage.click_createVacation();
+        try {
+            vacationsPage.click_createVacation();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    @Step("Set vacation dates")
+    @Step("Set vacation dates <dateFrom> <dateTo>")
     public void setVacationsDates(String dateFrom, String dateTo) {
         vacationsPage.set_date_from(dateFrom);
         vacationsPage.set_date_to(dateTo);
     }
 
-    @Step("Click create vacation")
     public void setUnpaidLeave() {
         vacationsPage.set_unpaid_leave();
     }
@@ -34,13 +37,18 @@ public class VacationsSteps {
         vacationsPage.click_close_button();
     }
 
+    @Step("Click Create in form")
     public void clickCreateVacationInForm() {
         vacationsPage.click_create_button();
     }
 
-    public void createVacationWithoutUnpaidLeave(String dateFrom, String dateTo) {
-        clickCreateVacationButton();
-        setVacationsDates(dateFrom, dateTo);
-        clickCreateVacationInForm();
+//    public void createVacationWithoutUnpaidLeave(String dateFrom, String dateTo) {
+//        clickCreateVacationButton();
+//        setVacationsDates(dateFrom, dateTo);
+//        clickCreateVacationInForm();
+//    }
+
+    public void countVacationDays() {
+
     }
 }

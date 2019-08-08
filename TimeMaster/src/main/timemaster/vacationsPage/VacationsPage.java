@@ -1,10 +1,16 @@
 package timemaster.vacationsPage;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 import static com.codeborne.selenide.Selectors.byClassName;
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 @Slf4j
@@ -22,18 +28,24 @@ public class VacationsPage {
     SelenideElement button_close;
     SelenideElement button_create;
 
+    SelenideElement backend_returned_code1;
+    SelenideElement backend_returned_code2;
+
     public VacationsPage() {
-        input_find = $("//input[@id='mat-input-1']");
-        input_year = $("//input[@id='mat-input-2']");
+        input_find = $(byXpath("//input[@id='mat-input-1']"));
+        input_year = $(byXpath("//input[@id='mat-input-2']"));
         button_create_vacation = $(byText("Create vacation"));
         employees_list = $(byClassName("users-column__employees-list employees-list"));
         vacations_list = $(byClassName("table-vacations__vacations-column vacations-column"));
 
-        input_date_from = $("//input[@id='mat-input-5']");
-        input_date_to = $("//input[@id='mat-input-6']");
+        input_date_from = $(byXpath("//input[@formcontrolname='dateFrom']"));
+        input_date_to = $(byXpath("//input[@formcontrolname='dateTo']"));
         checkbox_unpaid_leave = $(byClassName("mat-checkbox-inner-container"));
         button_close = $(byText("CLOSE"));
         button_create = $(byText("CREATE"));
+
+        backend_returned_code1 = $(byText(" Backend returned code 406 "));
+        backend_returned_code2 = $(byText(" Backend returned code undefined "));
     }
 
     public void click_find(String string) {
@@ -46,7 +58,8 @@ public class VacationsPage {
         input_year.setValue(year);
     }
 
-    public void click_createVacation() {
+    public void click_createVacation() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(4);
         log.info("click on the button \"Create vacation\"");
         button_create_vacation.click();
     }
@@ -74,5 +87,10 @@ public class VacationsPage {
     public void click_create_button() {
         log.info("click on the button \"CREATE\"");
         button_create.click();
+    }
+
+    public void check_backend_returned_codes() {
+        backend_returned_code1.exists();
+        backend_returned_code2.exists();
     }
 }

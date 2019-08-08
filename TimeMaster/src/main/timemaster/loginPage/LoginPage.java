@@ -1,5 +1,6 @@
 package timemaster.loginPage;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,6 +19,7 @@ public class LoginPage {
     }
 
     public void setEmail(String email){
+        input_email.waitUntil(Condition.visible, 10000);
         log.info("set email: " + email);
         input_email.setValue(email);
     }

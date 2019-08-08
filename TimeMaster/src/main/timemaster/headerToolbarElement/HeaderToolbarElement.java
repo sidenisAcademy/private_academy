@@ -1,5 +1,6 @@
 package timemaster.headerToolbarElement;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,7 +28,7 @@ public class HeaderToolbarElement {
 
         button_timetable = $(byText("Timetable"));
         button_settings = $(byText("Settings"));
-        button_vacations = $(byText("Vacation"));
+        button_vacations = $(byText("Vacations"));
         button_help = $(byText("Help"));
         button_logout = $(byText("Logout"));
     }
@@ -53,6 +54,7 @@ public class HeaderToolbarElement {
     }
 
     public void clickVacations() {
+        button_vacations.waitUntil(Condition.visible, 10000);
         log.info("click vacations");
         button_vacations.click();
     }

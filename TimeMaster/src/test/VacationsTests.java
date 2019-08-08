@@ -28,8 +28,8 @@ public class VacationsTests {
         driver.get(properties.getProperty("TM_URI"));
     }
 
-    @Test
-    public void createVacationWithoutUnpaidLeaveTest() {
-        vacationsSteps.createVacationWithoutUnpaidLeave("15 Aug 2019", "20 Sep 2019");
-    }
+//    @Test
+//    public void createVacationWithoutUnpaidLeaveTest() {
+//        vacationsSteps.createVacationWithoutUnpaidLeave("15 Aug 2019", "20 Sep 2019");
+//    }
 }
