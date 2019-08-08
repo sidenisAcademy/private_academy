@@ -13,7 +13,7 @@ public class SettingsSteps {
     @Step("Init page")
     public void initializePage() {sp.loadSettingsTab();}
     @Step("Validation settings")
-public void SettingValidation(){assertThat(url()).isEqualTo("https://timemaster-dev2.sidenis.local/settings");}
+    public void SettingValidation(){assertThat(url()).isEqualTo("https://timemaster-dev2.sidenis.local/settings");}
     @Step("Break Previous")
     public void setPreviousBreakValue() {sp.setPreviousBreak();}
 
