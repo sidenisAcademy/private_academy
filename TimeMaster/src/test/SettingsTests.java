@@ -1,5 +1,7 @@
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import context.driver.DriverFactory;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -37,21 +39,29 @@ public class SettingsTests {
         loginSteps.loginWithDefaultCreds();
         setSteps.initializePage();
         //setSteps.setPreviousBreakValue();
-        assertThat(url()).isEqualTo("https://timemaster-dev2.sidenis.local/settings");
+//        assertThat(url()).isEqualTo("https://timemaster-dev2.sidenis.local/settings");  // проверяем совпадение строк,но лучше не ассертами,  аотдельным методом
+        setSteps.SettingValidation();
     }
 
     @Test
     public void checkThatPreviousBreakSet() {
-        loginSteps.loginWithDefaultCreds();
+        loginSteps.loginWithDefaultCreds();  //эта часть избыточная, её можно отправить в before
         setSteps.initializePage();
         setSteps.setPreviousBreakValue();
-        assertThat(setSteps.isBreakInputEnabled()).isFalse();
+        setSteps.getBreakValue();
+        assertThat(setSteps.isBreakInputEnabled()).isFalse();  // проверяем свойством isFalse что поле не позволяет ничего вводить
     }
+
     @Test
     public void checkUserBreakValueIsSet() {
         loginSteps.loginWithDefaultCreds();
         setSteps.initializePage();
         setSteps.setUserBreakValue();
-        assertThat(setSteps.getBreakValue()).isEqualTo("0:30");
+        assertThat(setSteps.getBreakValue()).isEqualTo("0:60");
+    }
+
+    @After
+    public void endTest() {
+        driver.close();
     }
 }

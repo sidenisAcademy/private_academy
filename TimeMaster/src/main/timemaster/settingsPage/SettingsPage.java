@@ -14,7 +14,7 @@ public class SettingsPage {
     ElementsCollection countries;
     ElementsCollection projects;
 
-    public SelenideElement getBreak_input() {
+    public SelenideElement getBreak_input() {       // проверяем что элемент доступен
         return break_input;
     }
 
@@ -25,7 +25,7 @@ public class SettingsPage {
     {
         settingsTab = $("body > tm-root > tm-header > tm-menu > mat-toolbar > mat-toolbar-row > nav > a:nth-child(2) > span");
         settingsTab.click();
-        InitPage();
+        InitPage();                     // вызываем выполненение метода Init page
 
     }
     public void waitElement()
@@ -40,7 +40,7 @@ public class SettingsPage {
         break_input = $("#formly_3_input_breakDuration_1");
         countries = $$("#formly_4_select_value_0 > div > div.mat-select-arrow-wrapper");
         projects = $$("#formly_4_select_value_0 > div > div.mat-select-arrow-wrapper > div");
-
+// Не могу найти ни один из перечисленных селекторов
     }
 
     public void setPreviousBreak() {
@@ -51,6 +51,7 @@ public class SettingsPage {
     public void setBreakValue(String value)
     {
         setBreak_button.submit();
+        break_input.waitUntil(Condition.enabled, 10000);
         break_input.click();
         break_input.clear();
         break_input.setValue(value);
