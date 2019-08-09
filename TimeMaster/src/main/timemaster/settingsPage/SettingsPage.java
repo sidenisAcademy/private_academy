@@ -11,13 +11,14 @@ public class SettingsPage {
     SelenideElement rememberBreak_button;
     SelenideElement setBreak_button;
     SelenideElement break_input;
+    SelenideElement arrow_countries;
+    SelenideElement country_collection;
     ElementsCollection countries;
     ElementsCollection projects;
 
     public SelenideElement getBreak_input() {       // проверяем что элемент доступен
         return break_input;
     }
-
     public void SettingsPage() {
     }
 
@@ -38,8 +39,11 @@ public class SettingsPage {
         rememberBreak_button = $("#formly_3_radio_isDefaultBreakDuration_0_0 > label > div.mat-radio-label-content");
         setBreak_button = $("#formly_3_radio_isDefaultBreakDuration_0_1 > label > div.mat-radio-container > div.mat-radio-inner-circle");
         break_input = $("#formly_3_input_breakDuration_1");
-        countries = $$("#formly_4_select_value_0 > div > div.mat-select-arrow-wrapper");
-        projects = $$("#formly_4_select_value_0 > div > div.mat-select-arrow-wrapper > div");
+        arrow_countries = $("#formly_4_select_value_0 > div > div.mat-select-arrow-wrapper");
+  //      country_collection = $("#mat-option-975 > span");
+        countries = $$(".mat-option-text");     //селектор для всего списка стран
+        projects = $$("#formly_5_select_projects_0 > div > div.mat-select-arrow-wrapper");
+
 // Не могу найти ни один из перечисленных селекторов
     }
 
@@ -59,10 +63,16 @@ public class SettingsPage {
     }
 
     public void selectTimeZone(String city){
+       break_input.waitUntil(Condition.enabled, 10000);
+       arrow_countries.click();
+//сначала вызываем локатор для всех элементов коллекции а потом уже фильтруем
+//        country_collection
        countries.stream().filter(element -> element.getText().contains(city)).findFirst().get().click();
     }
 
     public void selectProject(String project){
+
+        break_input.waitUntil(Condition.enabled, 10000);
         projects.stream().filter(element -> element.getText().contains(project)).forEach(e -> e.click());
     }
 
