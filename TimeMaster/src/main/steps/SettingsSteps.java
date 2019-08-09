@@ -18,8 +18,10 @@ public class SettingsSteps {
     public void setPreviousBreakValue() {sp.setPreviousBreak();}
 
     public void setUserBreakValue() {sp.setBreakValue("0:60");}
-    public void selectTimeZone() {sp.selectTimeZone("Krasnoyarsk");}
-    public void setProjectList() {sp.selectProject("Sidenis");}
+
+    public void selectTimeZone() {sp.selectTimeZone("Kuwait");}
+//    public void TimeZoneValidation(){assertThat();}
+    public void setProjectList() {sp.selectProject("Risk");}
     public boolean isBreakInputEnabled() {
         Selenide.sleep(10000);
         return sp.getBreak_input().isEnabled();

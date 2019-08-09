@@ -60,8 +60,22 @@ public class SettingsTests {
         assertThat(setSteps.getBreakValue()).isEqualTo("0:60");
     }
 
-    @After
-    public void endTest() {
-        driver.close();
+    @Test
+    public void checkSelectedTimeZone() {
+        loginSteps.loginWithDefaultCreds();
+        setSteps.initializePage();
+        setSteps.selectTimeZone();
+//        setSteps.TimeZoneValidation();
     }
+    @Test
+    public void checkselectedProject(){
+        loginSteps.loginWithDefaultCreds();
+        setSteps.initializePage();
+        setSteps.setProjectList();
+    }
+
+//    @After
+//    public void endTest() {
+//        driver.close();
+//    }
 }
