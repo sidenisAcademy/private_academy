@@ -3,9 +3,9 @@ package context.utils;
 import java.io.*;
 import java.util.Properties;
 
-public class SetProperty {
+public class SetProperty1 {
 
-    public static final SetProperty INSTANCE = new SetProperty();
+    public static final SetProperty1 INSTANCE = new SetProperty1();
 
     public static Properties properties;
 

@@ -11,12 +11,12 @@ import static com.codeborne.selenide.Selenide.$;
 import static org.openqa.selenium.remote.ErrorCodes.TIMEOUT;
 
 @Slf4j
-public class LoginPage {
+public class LoginPage1 {
     SelenideElement input_email;
     SelenideElement input_password;
     SelenideElement button_submit;
 
-    public LoginPage() {
+    public LoginPage1() {
         button_submit = $("input[type = \"submit\"]");
         input_email = $("input[type = 'email']");
         input_password = $("input[name='passwd']");

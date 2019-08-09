@@ -3,9 +3,8 @@ package gauge;
 import com.codeborne.selenide.WebDriverRunner;
 import com.thoughtworks.gauge.*;
 import context.driver.DriverFactory;
-import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
-import steps.LoginSteps;
+import steps.LoginSteps1;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,7 +13,7 @@ import static context.utils.SetProperty.properties;
 import static context.utils.SetProperty.setProperties;
 
 public class TextContext {
-    LoginSteps loginSteps;
+    LoginSteps1 loginSteps;
     WebDriver driver;
 
     @BeforeSuite
@@ -24,7 +23,7 @@ public class TextContext {
     @BeforeScenario
     public void setupScenario() {
         setProperties();
-        loginSteps = new LoginSteps();
+        loginSteps = new LoginSteps1();
         setup();
         driver = DriverFactory.getDriver();
         driver.manage().timeouts().pageLoadTimeout(20000, TimeUnit.MILLISECONDS);

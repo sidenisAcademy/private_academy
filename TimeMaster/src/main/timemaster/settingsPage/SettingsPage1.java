@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 @Slf4j              // нужен для возможности логироваться
-public class SettingsPage {
+public class SettingsPage1 {
 
     SelenideElement settingsTab;
     SelenideElement rememberBreak_button;
@@ -22,7 +22,7 @@ public class SettingsPage {
         return break_input;
     }
 
-    public void SettingsPage() {
+    public void SettingsPage1() {
     }
 
     public void loadSettingsTab() {

@@ -2,13 +2,13 @@ package steps;
 
 import com.codeborne.selenide.Selenide;
 import com.thoughtworks.gauge.Step;
-import timemaster.settingsPage.SettingsPage;
+import timemaster.settingsPage.SettingsPage1;
 
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class SettingsSteps {
-    SettingsPage sp = new SettingsPage();
+public class SettingsSteps1 {
+    SettingsPage1 sp = new SettingsPage1();
 
     @Step("Init page")
     public void initializePage() {sp.loadSettingsTab();}

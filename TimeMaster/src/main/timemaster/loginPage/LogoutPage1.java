@@ -7,10 +7,10 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 @Slf4j
-public class LogoutPage {
+public class LogoutPage1 {
     SelenideElement button_submit;
 
-    public LogoutPage() {
+    public LogoutPage1() {
 //        button_submit = $("input[type = \"submit\"]");
         button_submit = $(new Selectors.ByText("Logout"));
             }

@@ -1,7 +1,7 @@
 package steps;
 
 import com.thoughtworks.gauge.Step;
-import timemaster.loginPage.LoginPage;
+import timemaster.loginPage.LoginPage1;
 
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static context.utils.SetProperty.properties;
@@ -9,7 +9,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class LoginSteps {
 
-    LoginPage page = new LoginPage();
+    LoginPage1 page = new LoginPage1();
 
     public void setDefaultUserName(){
         page.setEmail(properties.getProperty("USER_NAME"));

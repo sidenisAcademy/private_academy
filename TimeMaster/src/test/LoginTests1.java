@@ -2,7 +2,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import context.driver.DriverFactory;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
-import steps.LoginSteps;
+import steps.LoginSteps1;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,16 +10,16 @@ import static context.driver.DriverContext.setup;
 import static context.utils.SetProperty.properties;
 import static context.utils.SetProperty.setProperties;
 
-public class LoginTests {
+public class LoginTests1 {
 
-    LoginSteps loginSteps;
+    LoginSteps1 loginSteps;
     WebDriver driver;
 
 
     @Before()
     public void preparing() {
         setProperties();
-        loginSteps = new LoginSteps();
+        loginSteps = new LoginSteps1();
         setup();
         driver = DriverFactory.getDriver();
         driver.manage().timeouts().pageLoadTimeout(20000, TimeUnit.MILLISECONDS);
@@ -48,7 +48,7 @@ public class LoginTests {
 
 //    @Test
 //    public void LogoutTest() {
-//        LogoutSteps.submit();
+//        LogoutSteps1.submit();
 //    }
 
     @After

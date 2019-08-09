@@ -4,8 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import steps.LoginSteps;
-import steps.LogoutSteps;
+import steps.LoginSteps1;
+import steps.LogoutSteps1;
 
 import static com.codeborne.selenide.Selenide.sleep;
 import static context.driver.DriverContext.setup;
@@ -13,15 +13,15 @@ import static context.utils.SetProperty.properties;
 import static context.utils.SetProperty.setProperties;
 
 public class LogoutTest {
-    LogoutSteps logoutSteps;
+    LogoutSteps1 logoutSteps;
     WebDriver driver;
-    LoginSteps loginSteps;
+    LoginSteps1 loginSteps;
 
     @Before()
     public void preparing() {
         setProperties();
-        loginSteps = new LoginSteps();
-        logoutSteps = new LogoutSteps();
+        loginSteps = new LoginSteps1();
+        logoutSteps = new LogoutSteps1();
         setup();
         driver = DriverFactory.getDriver();
 //        driver.manage().timeouts().pageLoadTimeout(20000, TimeUnit.MILLISECONDS);

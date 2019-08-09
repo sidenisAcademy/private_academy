@@ -3,7 +3,7 @@ package steps;
 import com.thoughtworks.gauge.Step;
 import timemaster.timeTable.TimeTable;
 
-public class TimeTableSteps {
+public class TimeTableSteps1 {
 
     TimeTable page = new TimeTable();
 

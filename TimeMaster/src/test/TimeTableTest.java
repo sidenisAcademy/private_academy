@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import steps.LoginSteps;
+import steps.LoginSteps1;
 import steps.TimeTableSteps;
 
 import java.util.concurrent.TimeUnit;
@@ -16,13 +16,13 @@ import static context.utils.SetProperty.setProperties;
 public class TimeTableTest {
 
     TimeTableSteps timeTableSteps;
-    LoginSteps loginSteps;
+    LoginSteps1 loginSteps;
     WebDriver driver;
 
     @Before()
     public void preparing() {
         setProperties();
-        loginSteps = new LoginSteps();
+        loginSteps = new LoginSteps1();
         setup();
         driver = DriverFactory.getDriver();
         driver.manage().timeouts().pageLoadTimeout(20000, TimeUnit.MILLISECONDS);

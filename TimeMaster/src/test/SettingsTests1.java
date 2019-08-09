@@ -1,32 +1,29 @@
-import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import context.driver.DriverFactory;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import steps.LoginSteps;
-import steps.SettingsSteps;
+import steps.LoginSteps1;
+import steps.SettingsSteps1;
 
 import java.util.concurrent.TimeUnit;
 
-import static com.codeborne.selenide.WebDriverRunner.url;
 import static context.driver.DriverContext.setup;
 import static context.utils.SetProperty.properties;
 import static context.utils.SetProperty.setProperties;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class SettingsTests {
+public class SettingsTests1 {
 
-    LoginSteps loginSteps;
+    LoginSteps1 loginSteps;
     WebDriver driver;
-    SettingsSteps setSteps;
+    SettingsSteps1 setSteps;
 
     @Before()
     public void preparing() {
         setProperties();
-        loginSteps = new LoginSteps();
-        setSteps = new SettingsSteps();
+        loginSteps = new LoginSteps1();
+        setSteps = new SettingsSteps1();
         setup();
         driver = DriverFactory.getDriver();
         driver.manage().timeouts().pageLoadTimeout(20000, TimeUnit.MILLISECONDS);
