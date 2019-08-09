@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+
 @Slf4j
 public class SettingsPage {
 
@@ -12,38 +13,37 @@ public class SettingsPage {
     SelenideElement rememberBreak_button;
     SelenideElement setBreak_button;
     SelenideElement break_input;
-    SelenideElement country_errow;
-    SelenideElement project_errow;
+    SelenideElement timezone;
+    SelenideElement project;
+    SelenideElement sidenisLogo;
     ElementsCollection checkbox_list;
-    ElementsCollection projects;
-    SelenideElement actualCity;
-
 
 
     public void loadSettingsTab() {
         settingsTab = $(
                 "body > tm-root > tm-header > tm-menu > mat-toolbar > mat-toolbar-row > nav > a:nth-child(2) > span");
         settingsTab.click();
+        waitElement();
         InitPage();
 
     }
 
     public void waitElement() {
-        //wait until break_input
-        $("#formly_3_input_breakDuration_1").waitUntil(Condition.visible, 20000);
+        //wait until project list aapears
+        $("#formly_4_select_value_0 > div").waitUntil(Condition.enabled, 30000);
     }
 
     public void InitPage() {
-        waitElement();
-        rememberBreak_button = $("#formly_3_radio_isDefaultBreakDuration_0_0 > label > div.mat-radio-container > div.mat-radio-ripple.mat-ripple");
-        setBreak_button = $("#formly_3_radio_isDefaultBreakDuration_0_1 > label > div.mat-radio-container > div.mat-radio-inner-circle");
+        // waitElement();
+        rememberBreak_button = $(
+                "#formly_3_radio_isDefaultBreakDuration_0_0 > label > div.mat-radio-container > div.mat-radio-ripple.mat-ripple");
+        setBreak_button = $(
+                "#formly_3_radio_isDefaultBreakDuration_0_1 > label > div.mat-radio-container > div.mat-radio-inner-circle");
         break_input = $("#formly_3_input_breakDuration_1");
-        country_errow = $("#formly_4_select_value_0 > div > div.mat-select-arrow-wrapper");
-        project_errow = $("#formly_5_select_projects_0 > div > div.mat-select-arrow-wrapper");
+        timezone = $("#formly_4_select_value_0 > div > div.mat-select-arrow-wrapper");
+        project = $("#formly_5_select_projects_0 > div > div.mat-select-arrow-wrapper");
         checkbox_list = $$("span.mat-option-text");
-        actualCity = $("tm-time-zone-selector > form > formly-form > formly-field");
-        //checkbox_list = $$("span.mat");
-        //projects = $$("#formly_4_select_value_0 > div > div.mat-select-arrow-wrapper > div");
+        sidenisLogo = $("tm-header > tm-menu > mat-toolbar > mat-toolbar-row > div > div.logo");
 
     }
 
@@ -52,18 +52,15 @@ public class SettingsPage {
         return break_input;
     }
 
-    public SelenideElement getActualCity() {
-        actualCity.waitUntil(Condition.visible, 10000);
-        return actualCity;
-    }
-
     public void setPreviousBreak() {
+        waitElement();
         rememberBreak_button.submit();
-        //rememberBreak_button.waitUntil(Condition.checked, 1000);
-    }
+        rememberBreak_button.waitUntil(Condition.enabled, 10000);
 
+    }
 
     public void setBreakValue(String value) {
+        waitElement();
         setBreak_button.submit();
         break_input.click();
         break_input.clear();
@@ -71,25 +68,41 @@ public class SettingsPage {
         break_input.submit();
     }
 
+    public void openDropDownList(SelenideElement element) {
+        waitElement();
+        element.doubleClick();
+    }
+
     public void selectTimeZone(String city) {
-        waitElement();
-        country_errow = $("#formly_4_select_value_0 > div > div.mat-select-arrow-wrapper");
-        country_errow.doubleClick();
-        SelenideElement cityToSet = checkbox_list.stream().filter(element -> element.getText().contains(city)).findFirst().get();
-        cityToSet.parent().click();
+        openDropDownList(timezone);
+        checkbox_list.stream().filter(element -> element.getText().contains(city)).findFirst().get().parent().click();
     }
 
-    public void selectProject(String project) {
-        projects.stream().filter(element -> element.getText().contains(project)).forEach(e -> e.parent().click());
+    public void selectProject(String projectName) {
+        openDropDownList(project);
+        waitElement();
+        //checkbox_list.stream().filter(element -> element.getText().contains(projectName)).forEach(e -> e.parent().click());
+        checkbox_list.stream().filter(element -> element.getText().contains(projectName)).forEach(e -> (e.parent()).click());
+        setBreak_button.submit();
+
     }
 
-    public boolean isCityTicked(String city)
-    {
-        waitElement();
-        country_errow = $("#formly_4_select_value_0 > div > div.mat-select-arrow-wrapper > div");
-        country_errow.doubleClick();
-        SelenideElement cityToSet = checkbox_list.stream().filter(element -> element.getText().contains(city)).findFirst().get();
-        return Boolean.valueOf(cityToSet.parent().getAttribute("aria-selected"));
+    public boolean checkIfCitySet(String cityName) {
+        return isOptionSet(cityName, timezone);
+    }
+
+    public boolean checkIfProjectSet(String projectName) {
+        return isOptionSet(projectName, project);
+    }
+
+    public boolean isOptionSet(String option, SelenideElement el) {
+        openDropDownList(el);
+        boolean isSet;
+        SelenideElement optionToSet = checkbox_list.stream().filter(element -> element.getText().contains(option)).findFirst().get();
+        isSet = Boolean.valueOf((optionToSet.parent()).getAttribute("aria-selected"));
+        optionToSet.click();
+        return isSet;
+
     }
 
 

@@ -20,6 +20,7 @@ public class SettingsTests {
     WebDriver driver;
     SettingsSteps setSteps;
     String city  = "Krasnoyarsk";
+    String breakVal = "00:30";
 
     @Before()
     public void preparing() {
@@ -51,14 +52,13 @@ public class SettingsTests {
     public void checkUserBreakValueIsSet() {
         loginSteps.loginWithDefaultCreds();
         setSteps.initializePage();
-        setSteps.setUserBreakValue();
-        assertThat(setSteps.getBreakValue()).isEqualTo("0:30");
+        setSteps.setUserBreakValue(breakVal);
+        assertThat(setSteps.getBreakValue()).isEqualTo(breakVal);
     }
     @Test
     public void checkTimezoneIsSet() {
         loginSteps.loginWithDefaultCreds();
         setSteps.initializePage();
         setSteps.selectTimeZone(city);
-        //assertThat(setSteps.getBreakValue()).isEqualTo("0:30");
     }
 }
