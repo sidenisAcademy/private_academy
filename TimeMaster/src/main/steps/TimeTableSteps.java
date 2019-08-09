@@ -1,5 +1,6 @@
 package steps;
 
+import com.codeborne.selenide.Selenide;
 import com.thoughtworks.gauge.Step;
 import timemaster.timeTable.TimeTable;
 
@@ -20,5 +21,15 @@ public class TimeTableSteps {
     @Step("set a new time for isGuild <newIsGuild>")
     public void setIsGuildTime(String newIsGuild){
         page.setIsGuild(newIsGuild);
+    }
+
+    @Step("set a new comment <newComment>")
+    public void setNewComment(String newComment){
+        page.setComments(newComment);
+    }
+
+    @Step("pause")
+    public void pause(){
+        Selenide.sleep(5000);
     }
 }
