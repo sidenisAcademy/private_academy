@@ -13,7 +13,7 @@ import static context.driver.DriverContext.setup;
 import static context.utils.SetProperty.properties;
 import static context.utils.SetProperty.setProperties;
 
-public class TextContext {
+public class TestContext {
     LoginSteps loginSteps;
     WebDriver driver;
 
