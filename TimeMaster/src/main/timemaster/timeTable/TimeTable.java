@@ -26,25 +26,28 @@ public class TimeTable {
         breaks = $$("td[data-test = 'break']");
         dayType = $$("td[htNoWrap htAutocomplete current highlight = 'htAutocompleteArrow']");
         is = $$(By.xpath("//tr[@class=\"day-type--BD\"][4]/td[@class=\"\"][3]"));
-        isGuild=$$(By.xpath("//tr[@class=\"day-type--BD\"][4]/td[@class=\"\"][5]"));
+        isGuild = $$(By.xpath("//tr[@class=\"day-type--BD\"][4]/td[@class=\"\"][5]"));
     }
+
     public void setText(String newBreak) {
         SelenideElement breakChanger;
         breakChanger = $("textarea[class = 'handsontableInput']").shouldBe(Condition.visible);
         breakChanger.doubleClick();
         breakChanger.sendKeys(newBreak);
     }
+
     public void setBreak(String newBreak) {
         log.info("Set break: " + newBreak);
-        breaks.get(4).doubleClick();
+        breaks.get(5).doubleClick();
         setText(newBreak);
-        breaks.get(5).click();
+        breaks.get(4).click();
         sleep(6000);
     }
 
-    public void setIs(String newIs){
-        log.info("Set is time: "+newIs);
+    public void setIs(String newIs) {
+        log.info("Set is time: " + newIs);
         is.get(0).doubleClick();
+        //setText(newIs);
         setIsTime(newIs);
         is.get(0).click();
         sleep(6000);
@@ -52,14 +55,15 @@ public class TimeTable {
 
     public void setIsTime(String newIs) {
         SelenideElement iSTime;
-        iSTime = $(By.xpath("//textarea[@class=\"handsontableInput\"]"));
+        iSTime = $(By.xpath("//textarea[@class=\"handsontableInput\"]")).shouldBe(Condition.visible);
         iSTime.doubleClick();
         iSTime.sendKeys(newIs);
     }
 
-    public void setIsGuild(String newIsGuild){
-        log.info("Set is time: "+newIsGuild);
+    public void setIsGuild(String newIsGuild) {
+        log.info("Set is time: " + newIsGuild);
         isGuild.get(0).doubleClick();
+        //setText(newIsGuild);
         setIsGuildTime(newIsGuild);
         isGuild.get(0).click();
         sleep(6000);
@@ -67,7 +71,7 @@ public class TimeTable {
 
     public void setIsGuildTime(String newIsGuild) {
         SelenideElement iSGuildTime;
-        iSGuildTime = $(By.xpath("//textarea[@class=\"handsontableInput\"]"));
+        iSGuildTime = $(By.xpath("//textarea[@class=\"handsontableInput\"]")).shouldBe(Condition.visible);
         iSGuildTime.doubleClick();
         iSGuildTime.sendKeys(newIsGuild);
     }

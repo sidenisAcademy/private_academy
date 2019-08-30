@@ -1,10 +1,14 @@
 package gauge;
 
 import com.codeborne.selenide.WebDriverRunner;
-import com.thoughtworks.gauge.*;
+import com.thoughtworks.gauge.AfterScenario;
+import com.thoughtworks.gauge.BeforeScenario;
 import context.driver.DriverFactory;
+import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import steps.LoginSteps1;
+import steps.LogoutSteps1;
+import steps.LoginSteps;
 
 import java.util.concurrent.TimeUnit;
 
@@ -12,8 +16,12 @@ import static context.driver.DriverContext.setup;
 import static context.utils.SetProperty.properties;
 import static context.utils.SetProperty.setProperties;
 
-public class TextContext2 {
+public class TestContext1 {
+
     LoginSteps1 loginSteps;
+    LogoutSteps1 logoutSteps;
+public class TestContext {
+    LoginSteps loginSteps;
     WebDriver driver;
 
     @BeforeSuite
@@ -24,10 +32,12 @@ public class TextContext2 {
     public void setupScenario() {
         setProperties();
         loginSteps = new LoginSteps1();
+        logoutSteps = new LogoutSteps1();
+        loginSteps = new LoginSteps();
         setup();
         driver = DriverFactory.getDriver();
-        driver.manage().timeouts().pageLoadTimeout(20000, TimeUnit.MILLISECONDS);
-        WebDriverRunner.setWebDriver(driver);
+//        driver.manage().timeouts().pageLoadTimeout(20000, TimeUnit.MILLISECONDS);
+        WebDriverRunner.setWebDriver(driver); // пропихиваем драйвер селениду через getWebDriver() можно получить текущий драйвер
         driver.get(properties.getProperty("TM_URI"));
     }
 

@@ -48,7 +48,7 @@ public class LoginTests1 {
 
 //    @Test
 //    public void LogoutTest() {
-//        LogoutSteps1.submit();
+//        LogoutSteps.submit();
 //    }
 
     @After
