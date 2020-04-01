@@ -23,10 +23,13 @@ public class LoginSteps {
         page.submit();
     }
 
+
+    @Step("Check that user is on main page")
     public void checkThatUserOnMainPage() {
         assertThat(url()).isEqualTo(properties.getProperty("TM_URI"));
     }
-@Step("Login")
+
+    @Step("Login")
     public void loginWithDefaultCreds() {
         setDefaultUserName();
         submit();

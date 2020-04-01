@@ -1,12 +1,7 @@
 login
-====
+=====
 
 login
------
+------
 * Login
-
-Scenario Heading2
-----------------
-* Login
-* Init page
-* Validation settings
+* Check that user is on main page

@@ -1,7 +1,5 @@
-import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import context.driver.DriverFactory;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +19,8 @@ public class SettingsTests {
     LoginSteps loginSteps;
     WebDriver driver;
     SettingsSteps setSteps;
+    String city  = "Krasnoyarsk";
+    String breakVal = "00:30";
 
     @Before()
     public void preparing() {
@@ -38,44 +38,27 @@ public class SettingsTests {
     public void checkThatUserOnSettingsPage() {
         loginSteps.loginWithDefaultCreds();
         setSteps.initializePage();
-        //setSteps.setPreviousBreakValue();
-//        assertThat(url()).isEqualTo("https://timemaster-dev2.sidenis.local/settings");  // проверяем совпадение строк,но лучше не ассертами,  аотдельным методом
-        setSteps.SettingValidation();
+        assertThat(url()).isEqualTo("https://timemaster-dev2.sidenis.local/settings");
     }
 
     @Test
     public void checkThatPreviousBreakSet() {
-        loginSteps.loginWithDefaultCreds();  //эта часть избыточная, её можно отправить в before
+        loginSteps.loginWithDefaultCreds();
         setSteps.initializePage();
         setSteps.setPreviousBreakValue();
-        setSteps.getBreakValue();
-        assertThat(setSteps.isBreakInputEnabled()).isFalse();  // проверяем свойством isFalse что поле не позволяет ничего вводить
+        setSteps.isBreakInputEnabled();
     }
-
     @Test
     public void checkUserBreakValueIsSet() {
         loginSteps.loginWithDefaultCreds();
         setSteps.initializePage();
-        setSteps.setUserBreakValue();
-        assertThat(setSteps.getBreakValue()).isEqualTo("0:60");
-    }
-
-    @Test
-    public void checkSelectedTimeZone() {
-        loginSteps.loginWithDefaultCreds();
-        setSteps.initializePage();
-        setSteps.selectTimeZone();
-//        setSteps.TimeZoneValidation();
+        setSteps.setUserBreakValue(breakVal);
+        assertThat(setSteps.getBreakValue()).isEqualTo(breakVal);
     }
     @Test
-    public void checkselectedProject(){
+    public void checkTimezoneIsSet() {
         loginSteps.loginWithDefaultCreds();
         setSteps.initializePage();
-        setSteps.setProjectList();
+        setSteps.selectTimeZone(city);
     }
-
-//    @After
-//    public void endTest() {
-//        driver.close();
-//    }
 }

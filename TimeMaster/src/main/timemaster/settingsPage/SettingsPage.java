@@ -6,79 +6,103 @@ import lombok.extern.slf4j.Slf4j;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-@Slf4j              // нужен для возможности логироваться
+@Slf4j
 public class SettingsPage {
 
     SelenideElement settingsTab;
     SelenideElement rememberBreak_button;
     SelenideElement setBreak_button;
     SelenideElement break_input;
-//    SelenideElement arrow_countries;
-    SelenideElement field_countries;
-    ElementsCollection countries;
-    ElementsCollection projects;
+    SelenideElement timezone;
+    SelenideElement project;
+    SelenideElement sidenisLogo;
+    ElementsCollection checkbox_list;
 
-    public SelenideElement getBreak_input() {       // проверяем что элемент доступен
-        return break_input;
-    }
-
-    public void SettingsPage() {
-    }
 
     public void loadSettingsTab() {
-        settingsTab = $("body > tm-root > tm-header > tm-menu > mat-toolbar > mat-toolbar-row > nav > a:nth-child(2) > span");
+        settingsTab = $(
+                "body > tm-root > tm-header > tm-menu > mat-toolbar > mat-toolbar-row > nav > a:nth-child(2) > span");
         settingsTab.click();
-        InitPage();                     // вызываем выполненение метода Init page
+        waitElement();
+        InitPage();
 
     }
 
     public void waitElement() {
-        $("#formly_3_input_breakDuration_1").waitUntil(Condition.visible, 10000);
+        //wait until project list aapears
+        $("#formly_4_select_value_0 > div").waitUntil(Condition.enabled, 30000);
     }
 
     public void InitPage() {
-        waitElement();
-        rememberBreak_button = $("#formly_3_radio_isDefaultBreakDuration_0_0 > label > div.mat-radio-label-content");
-        setBreak_button = $("#formly_3_radio_isDefaultBreakDuration_0_1 > label > div.mat-radio-container > div.mat-radio-inner-circle");
+        // waitElement();
+        rememberBreak_button = $(
+                "#formly_3_radio_isDefaultBreakDuration_0_0 > label > div.mat-radio-container > div.mat-radio-ripple.mat-ripple");
+        setBreak_button = $(
+                "#formly_3_radio_isDefaultBreakDuration_0_1 > label > div.mat-radio-container > div.mat-radio-inner-circle");
         break_input = $("#formly_3_input_breakDuration_1");
-//       arrow_countries = $("#formly_4_select_value_0 > div > div.mat-select-arrow-wrapper");   //.get(0) -вызывает первый элемент из найденного списка если обращаемся как к коллекции элементов и  поставим $$
-        field_countries = $("#formly_4_select_value_0 > div > div.mat-select-value");
-        countries = $$(".mat-option-text");     //селектор для всего списка стран
-        projects = $$("#formly_5_select_projects_0 > div > div.mat-select-arrow-wrapper");
+        timezone = $("#formly_4_select_value_0 > div > div.mat-select-arrow-wrapper");
+        project = $("#formly_5_select_projects_0 > div > div.mat-select-arrow-wrapper");
+        checkbox_list = $$("span.mat-option-text");
+        sidenisLogo = $("tm-header > tm-menu > mat-toolbar > mat-toolbar-row > div > div.logo");
 
-// Не могу найти ни один из перечисленных селекторов
+    }
+
+    public SelenideElement getBreak_input() {
+        waitElement();
+        return break_input;
     }
 
     public void setPreviousBreak() {
+        waitElement();
         rememberBreak_button.submit();
+        rememberBreak_button.waitUntil(Condition.enabled, 10000);
+
     }
 
-
     public void setBreakValue(String value) {
+        waitElement();
         setBreak_button.submit();
-        break_input.waitUntil(Condition.enabled, 10000);
         break_input.click();
         break_input.clear();
         break_input.setValue(value);
         break_input.submit();
     }
 
-    public void selectTimeZone(String city) {
-        log.info("waiting for arrow");
-        field_countries.waitUntil(Condition.enabled, 20000);
-        log.info("arrow is enabled");
-  //     arrow_countries.doubleClick(); // можно поставить doubleClick(
-        field_countries.doubleClick(); // вызываем поле
-        log.info("click on arrow");
-//сначала вызываем локатор для всех элементов коллекции а потом уже фильтруем
-//        country_collection
-        countries.stream().filter(element -> element.getText().contains(city)).findFirst().get().click();
+    public void openDropDownList(SelenideElement element) {
+        waitElement();
+        element.doubleClick();
     }
 
-    public void selectProject(String project) {
+    public void selectTimeZone(String city) {
+        openDropDownList(timezone);
+        checkbox_list.stream().filter(element -> element.getText().contains(city)).findFirst().get().parent().click();
+    }
 
-        break_input.waitUntil(Condition.enabled, 10000);
-        projects.stream().filter(element -> element.getText().contains(project)).forEach(e -> e.click());
+    public void selectProject(String projectName) {
+        openDropDownList(project);
+        waitElement();
+        //checkbox_list.stream().filter(element -> element.getText().contains(projectName)).forEach(e -> e.parent().click());
+        checkbox_list.stream().filter(element -> element.getText().contains(projectName)).forEach(e -> (e.parent()).click());
+        setBreak_button.submit();
+
+    }
+
+    public boolean checkIfCitySet(String cityName) {
+        return isOptionSet(cityName, timezone);
+    }
+
+    public boolean checkIfProjectSet(String projectName) {
+        return isOptionSet(projectName, project);
+    }
+
+    public boolean isOptionSet(String option, SelenideElement el) {
+        openDropDownList(el);
+        boolean isSet;
+        SelenideElement optionToSet = checkbox_list.stream().filter(element -> element.getText().contains(option)).findFirst().get();
+        isSet = Boolean.valueOf((optionToSet.parent()).getAttribute("aria-selected"));
+        optionToSet.click();
+        return isSet;
+
     }
 
 
